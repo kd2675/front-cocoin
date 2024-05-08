@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+//    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+
+    "target": "es5",
+    "forceConsistentCasingInFileNames": true,
+    "downlevelIteration": true,
+    "baseUrl": ".",
+
+    "paths": {
+      "@/*": ["./*"],
+
+      "@redux/*": [ "redux/*" ],
+      "@component/*": [ "component/*" ],
+      "@styles/*": [ "styles/*" ],
+      "@lib/*": [ "lib/*" ],
+      "@schema/*": [ "schema/*" ],
+      "@utils/*": [ "utils/*" ],
+      "@hooks/*": [ "hooks/*" ],
+      "@api/*": [ "api/*" ],
+      "@query/*": ["query/*"],
+      "@motion/*": ["motion/*"],
+      "@link/*": ["link/*"],
+      "@reducers/*": ["reducers/*"],
+      "@public/*": ["public/*"],
+      "@service/*": ["service/*"],
+      "@types/*": ["types/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

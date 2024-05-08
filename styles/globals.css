@@ -1,0 +1,49 @@
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    min-height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+body {
+    /*background-image: linear-gradient(*/
+    /*        rgba(255, 255, 255, 0.5),*/
+    /*        rgba(0, 0, 0, 0)*/
+    /*), url("../public/images/background5.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        color-scheme: dark;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .toastui-editor-popup {
+        max-width: 300px;
+        margin-left: 0px;
+    }
+
+    .toastui-editor-dropdown-toolbar {
+        max-width: none;
+    }
+}
+
+.swiper-slide img {
+    object-fit: contain;
+}
