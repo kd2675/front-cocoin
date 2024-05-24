@@ -1,66 +1,35 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 export type LinkType = 'push' | 'replace'
 
-export const goHomeRoute = () => {
+export const healthRoute = () => {
 	const router = useRouter()
 	const goPage = ({ type }: { type: LinkType }) => {
-		router[type]({
-			pathname: '/',
-		})
+		router[type]('/health', {})
 	}
 	return goPage
 }
-export const goIntroRoute = () => {
-	const router = useRouter()
-	const goPage = ({ type, id='' }: { type: LinkType; id?: string }) => {
-		router[type]({
-			pathname: `/intro/` + id,
-		})
-	}
-	return goPage
-}
-export const goIntroShlRoute = () => {
-	const router = useRouter()
-	const goPage = ({ type, id }: { type: LinkType; id?: number }) => {
-		router[type](
-			{
-				pathname: `/intro/` + (id ?? ''),
 
-			},
-			undefined,
-			{ shallow: true }
-		)
+export const goLoginRoute = () => {
+	const router = useRouter()
+	const goPage = ({ type }: { type: LinkType }) => {
+		router[type]('/login', {})
 	}
 	return goPage
 }
-export const goProductRoute = () => {
-	const router = useRouter()
-	const goPage = ({ type, id }: { type: LinkType; id?: number }) => {
-		router[type](
-			{
-				pathname: `/product/` + (id ?? ''),
 
-			}
-		)
+export const goJoinRoute = () => {
+	const router = useRouter()
+	const goPage = ({ type }: { type: LinkType }) => {
+		router[type]('/join', {})
 	}
 	return goPage
 }
-export const goNoticeRoute = () => {
+
+export const goCoinRouter = () => {
 	const router = useRouter()
 	const goPage = ({ type }: { type: LinkType }) => {
-		router[type]({
-			pathname: '/notice',
-		})
-	}
-	return goPage
-}
-export const goInquiryRoute = () => {
-	const router = useRouter()
-	const goPage = ({ type }: { type: LinkType }) => {
-		router[type]({
-			pathname: '/inquiry',
-		})
+		router[type]('/coin', {})
 	}
 	return goPage
 }

@@ -1,11 +1,9 @@
-import Service from '@/service/Service';
-import { Health } from '@/types/Health'
+import Service from '@/service/Service'
+import { Response } from '@/types/Response'
 
 class HealthService extends Service {
 	getHealth() {
-		return this.http.get<Health>(
-			`/api/auth/ctf/health`,
-		);
+		return this.http.get<Response<string>>(`/api/auth/ctf/health`)
 	}
 }
 

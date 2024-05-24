@@ -1,9 +1,18 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import './globals.css'
+
+import '@styles/globals.css'
+
+// import '@toast-ui/editor/dist/toastui-editor.css'
+import 'swiper/css'
+// import 'swiper/css/lazy'
+// import 'swiper/css/scrollbar'
+// import 'swiper/css/navigation'
+// import 'swiper/css/pagination'
 import StoreProvider from '@/app/StoreProvider'
-import process from 'process'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import AlertUtil from '@utils/alertUtil'
+import { useSelector } from 'react-redux'
+import { RootState } from '@redux/store'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,9 +27,10 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='kr'>
-			<body className={inter.className}>
+		<html className='h-full bg-white' lang='kr'>
+			<body className={inter.className + ' h-full'}>
 				<StoreProvider>
+					<AlertUtil />
 					{children}
 				</StoreProvider>
 			</body>

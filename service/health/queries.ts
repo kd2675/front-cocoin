@@ -1,12 +1,12 @@
 import HealthService from '@/service/health/HealthService'
 
 const queryKeys = {
-	all: ['health'] as const
+	health: ['health'] as const
 }
 
 const queryOptions = {
-	all: () => ({
-		queryKey: queryKeys.all,
+	health: () => ({
+		queryKey: queryKeys.health,
 		queryFn: () => HealthService.getHealth(),
 	})
 };

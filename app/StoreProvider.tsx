@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { CompatClient } from '@stomp/stompjs'
 import { connect, disconnect } from '@/socket'
 import { Provider } from 'react-redux'
-import { QueryClientProvider } from '@tanstack/react-query'
+import { QueryClientProvider, useQueryClient } from '@tanstack/react-query'
 import { SocketContext } from '@/socket/useSocketClient'
 import { getQueryClient } from '@query/reactQuery'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -25,14 +25,17 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
 						// With SSR, we usually want to set some default staleTime
 						// above 0 to avoid refetching immediately on the client
 						staleTime: 60 * 1000,
+						refetchOnWindowFocus: true,
 					},
-				},queryCache: new QueryCache({
+				},
+				queryCache: new QueryCache({
 					onError: (error, query) => {
-						console.log("error")
+						console.log('error')
 					},
 				}),
-			}),
+			})
 	)
+
 	const router = useRouter()
 	const client = useRef<CompatClient>()
 
@@ -52,7 +55,7 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
 			<SocketContext.Provider value={client}>
 				<Provider store={storeRef.current}>
 					{children}
-					{process.env.NODE_ENV === 'development' && <ReactQueryDevtools initialIsOpen={false} />}
+					{process.env.NODE_ENV !== 'production' && <ReactQueryDevtools initialIsOpen={false} />}
 				</Provider>
 			</SocketContext.Provider>
 		</QueryClientProvider>

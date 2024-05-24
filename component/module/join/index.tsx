@@ -1,0 +1,130 @@
+'use client'
+
+import React, { useEffect } from 'react'
+import { basicAnim } from '@motion/BasicAnim'
+import { motion } from 'framer-motion'
+import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/navigation'
+import { RootState } from '@redux/store'
+import { FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
+import { SignUpRegisterSchema, SignUpRegisterSchemaType } from '@schema/signUp'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { authActions } from '@redux/reducers/auth'
+import { alertActions } from '@redux/reducers/alert'
+// import { signUpActions } from '@redux/reducers/signUp'
+import SignUpEmailInput from '@component/module/join/SignUpEmailInput'
+import SignUpPwdInput from '@component/module/join/SignUpPwdInput'
+import SignUpPwdCheckInput from '@component/module/join/SignUpPwdCheckInput'
+import SignUpNameInput from '@component/module/join/SignUpNameInput'
+import SignUpPhoneInput from '@component/module/join/SignUpPhoneInput'
+import SignUpNickInput from '@component/module/join/SignUpNickInput'
+import { insSignUp } from '@api/auth'
+
+const Index = () => {
+	const dispatch = useDispatch()
+	const router = useRouter()
+
+	// let emailCheckYn = useSelector((state: RootState) => state.signUp.emailCheckYn)
+	// let nickCheckYn = useSelector((state: RootState) => state.signUp.nickCheckYn)
+
+	const methods = useForm<SignUpRegisterSchemaType>({
+		resolver: yupResolver(SignUpRegisterSchema),
+		mode: 'onSubmit',
+		reValidateMode: 'onSubmit',
+		shouldFocusError: false,
+	})
+
+	const emailRegister = methods.register('userEmail')
+	const pwdRegister = methods.register('userPwd')
+	const pwdCheckRegister = methods.register('userPwdCheck')
+	const nameRegister = methods.register('userName')
+	const phoneRegister = methods.register('userPhone')
+	const nickRegister = methods.register('userNick')
+
+	const submitHandler: SubmitHandler<SignUpRegisterSchemaType> = async (data) => {
+		// if (emailCheckYn === 'y' && nickCheckYn === 'y') {
+		// 	// await insSignUp(data);
+		//
+		// 	// dispatch(authActions.signUp(data))
+		// }
+		// else if (emailCheckYn === 'y') {
+		// 	dispatch(alertActions.addAlert({ msg: '닉네임 중복체크를 해주세요', type: 'danger' }))
+		// } else if (nickCheckYn === 'y') {
+		// 	dispatch(alertActions.addAlert({ msg: '이메일 중복체크를 해주세요', type: 'danger' }))
+		// } else {
+		// 	dispatch(alertActions.addAlert({ msg: '이메일, 닉네임 중복체크를 해주세요', type: 'danger' }))
+		// }
+	}
+	const submitErrorHandler: SubmitErrorHandler<SignUpRegisterSchemaType> = (data) => {
+		let value = Object.values(data)[0]
+		console.log('submitData : ', data)
+
+		dispatch(alertActions.addAlert({ msg: value.message, type: 'danger' }))
+	}
+
+	useEffect(() => {
+		// dispatch(signUpActions.setEmailCheckYn('n'))
+		// dispatch(signUpActions.setNickCheckYn('n'))
+	}, [])
+	return (
+		<>
+			<motion.div className={'overflow-hidden'} initial={basicAnim.initial} animate={basicAnim.animate}>
+				<div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+					<div className="w-full max-w-md space-y-8">
+						<div className={'mx-auto max-w-7xl sm:px-6 lg:px-8'}>
+							<div className="sm:mt-0">
+								<div className={'flex'}>
+									<div className="flex-1 justify-start p-2">
+										<button
+											type="button"
+											className="btn-close box-content w-4 h-4 ml-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+											data-mdb-dismiss="toast"
+											aria-label="Close"
+											onClick={() => {
+												router.back()
+											}}
+										></button>
+									</div>
+									<h1 className="justify-center text-center text-2xl font-bold text-gray-500 mb-4">SignUp</h1>
+									<div className={'flex-1 justify-end'}></div>
+								</div>
+								<div className="md:grid md:grid-cols-3 md:gap-6">
+									<div className="mt-5 md:col-span-3 md:mt-0">
+										<FormProvider {...methods}>
+											<div className="overflow-hidden shadow sm:rounded-md">
+												<div className="bg-white px-4 py-5 sm:p-6">
+													<div className="grid grid-cols-6 gap-6">
+														<SignUpEmailInput register={emailRegister}></SignUpEmailInput>
+														<SignUpPwdInput register={pwdRegister}></SignUpPwdInput>
+														<SignUpPwdCheckInput register={pwdCheckRegister}></SignUpPwdCheckInput>
+														<SignUpNameInput register={nameRegister}></SignUpNameInput>
+														<SignUpPhoneInput register={phoneRegister}></SignUpPhoneInput>
+														<SignUpNickInput register={nickRegister}></SignUpNickInput>
+													</div>
+												</div>
+												<div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
+													<button
+														type="button"
+														className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+														onClick={() => {
+															methods.handleSubmit(submitHandler, submitErrorHandler)()
+														}}
+														disabled={methods.formState.isSubmitting}
+													>
+														SignUp!
+													</button>
+												</div>
+											</div>
+										</FormProvider>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</motion.div>
+		</>
+	)
+}
+
+export default Index

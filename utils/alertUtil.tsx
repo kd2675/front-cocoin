@@ -1,3 +1,5 @@
+'use client'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { Alert } from '@redux/types/alertType'
 import { SetStateAction, useEffect, useRef } from 'react'

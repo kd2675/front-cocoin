@@ -7,7 +7,7 @@ export const SignUpRegisterSchema = yup.object({
 	userPwd: yup.string()
 		.required('패스워드를 입력해주세요')
 		.min(8, '8자리 이상 입력하세요'),
-	userPwdCheck: yup.string().oneOf([yup.ref('userPwd'), null],
+	userPwdCheck: yup.string().oneOf([yup.ref('userPwd'), undefined],
 		'패스워드가 일치하지 않습니다.'),
 	userName: yup.string()
 		.required('이름을 입력하세요'),

@@ -1,49 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
-html,
-body {
-    min-height: 100vh;
-    max-width: 100vw;
-    overflow-x: hidden;
-}
-
-body {
-    /*background-image: linear-gradient(*/
-    /*        rgba(255, 255, 255, 0.5),*/
-    /*        rgba(0, 0, 0, 0)*/
-    /*), url("../public/images/background5.jpg");*/
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-    html {
-        color-scheme: dark;
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
     }
 }
 
-@media only screen and (max-width: 480px) {
-    .toastui-editor-popup {
-        max-width: 300px;
-        margin-left: 0px;
-    }
-
-    .toastui-editor-dropdown-toolbar {
-        max-width: none;
-    }
+body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+            to bottom,
+            transparent,
+            rgb(var(--background-end-rgb))
+    ) rgb(var(--background-start-rgb));
 }
 
-.swiper-slide img {
-    object-fit: contain;
+@layer utilities {
+    .text-balance {
+        text-wrap: initial;
+    }
 }

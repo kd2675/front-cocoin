@@ -1,21 +1,17 @@
-import Image from 'next/image'
-import { getDehydratedQuery, Hydrate } from '@query/reactQuery'
-import PhotoList from '@component/PhotoList'
-import queryOptions from '@/service/photo/queries'
+import Main from '@component/module/main'
+import { cookies } from 'next/headers'
 
-export default async function Home() {
-	const { queryKey, queryFn } = queryOptions.all();
-	const query = await getDehydratedQuery({ queryKey, queryFn });
+type PropsType = {}
+
+const Page = async (props: PropsType) => {
+	const cookieStore = cookies()
+	// console.log(cookieStore.has('test'))
 
 	return (
-		<main className='flex min-h-screen flex-col items-center justify-between p-24'>
-
-			{/* 서버 사이드 렌더링 & 서버 컴포넌트 */}
-			<Hydrate state={{ queries: [query] }}>
-				{/* Client Component */}
-				<PhotoList/>
-				{/* Server Component */}
-			</Hydrate>
+		<main className='flex flex-col items-center justify-between p-24'>
+			<Main></Main>
 		</main>
 	)
 }
+
+export default Page

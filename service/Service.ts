@@ -116,7 +116,7 @@ class Service {
 		url: string,
 		config?: AxiosRequestConfig,
 	): Promise<T> {
-		return this.request<T>('GET', url, undefined, config);
+		return this.request<T>('get', url, undefined, config);
 	}
 
 	// private delete<T>(
@@ -145,7 +145,7 @@ class Service {
 		data?: unknown,
 		config?: AxiosRequestConfig,
 	): Promise<T> {
-		return this.request<T>('POST', url, data, config);
+		return this.request<T>('post', url, data, config);
 	}
 
 	// private put<T>(

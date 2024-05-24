@@ -2,6 +2,7 @@
 import { useHealth } from '@service/health/useHealthService'
 
 export default function Health() {
-	const { data: health } = useHealth()
-	return <div>{health && <div>{health.data}</div>}</div>
+	const health = useHealth()
+	console.log(health)
+	return <>{health && <h2>{health.data?.data}</h2>}</>
 }
