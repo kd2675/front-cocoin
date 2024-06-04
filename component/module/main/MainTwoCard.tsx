@@ -2,39 +2,50 @@
 
 import React from 'react'
 import { goCoinRouter } from '@/link'
+import { useDispatch } from 'react-redux'
+import { modalActions } from 'redux/reducers/modal'
 
 const MainTwoCard = () => {
+	const dispatch = useDispatch()
 	const coinRouter = goCoinRouter()
 	const goCoin = () => {
 		coinRouter({ type: 'push' })
 	}
+	const ready = () => {
+		// dispatch(modalActions.addAlert({ msg: '준비중입니다.', type: 'info' }))
+		// dispatch(modalActions.addToast({ msg: '준비중입니다.' }))
+		dispatch(modalActions.addConfirm({ msg: '준비중입니다.' }))
+	}
+	const test = () => {
+		dispatch(modalActions.addAlert({ msg: 'test', type: 'info' }))
+	}
 
 	return (
 		<>
-			<section className='body-font text-gray-600'>
-				<div className='container mx-auto px-5'>
-					<div className='-m-4 flex flex-wrap'>
-						<div className='cursor-pointer p-4 lg:w-1/2'>
+			<section className="body-font text-gray-600">
+				<div className="container mx-auto px-5">
+					<div className="-m-4 flex flex-wrap">
+						<div className="cursor-pointer p-4 lg:w-1/2">
 							<div
-								className='relative h-full overflow-hidden rounded-lg bg-gray-100 bg-opacity-75 px-8 pb-24 pt-16 text-center'
-								onClick={goCoin}
+								className="relative h-full overflow-hidden rounded-lg bg-gray-100 bg-opacity-75 px-8 pb-24 pt-16 text-center"
+								onClick={test}
 							>
-								<h2 className='title-font mb-1 text-xs font-medium tracking-widest text-gray-400'>CATEGORY</h2>
-								<h1 className='title-font mb-3 text-xl font-medium text-gray-900 sm:text-2xl'>모의코인방</h1>
-								<p className='mb-3 leading-relaxed'>화이팅</p>
-								<div className='inline-flex items-center text-indigo-500'>
+								<h2 className="title-font mb-1 text-xs font-medium tracking-widest text-gray-400">CATEGORY</h2>
+								<h1 className="title-font mb-3 text-xl font-medium text-gray-900 sm:text-2xl">모의코인방</h1>
+								<p className="mb-3 leading-relaxed">화이팅</p>
+								<div className="inline-flex items-center text-indigo-500">
 									바로가기
 									<svg
-										className='ml-2 h-4 w-4'
-										viewBox='0 0 24 24'
-										stroke='currentColor'
-										strokeWidth='2'
-										fill='none'
-										strokeLinecap='round'
-										strokeLinejoin='round'
+										className="ml-2 h-4 w-4"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+										strokeWidth="2"
+										fill="none"
+										strokeLinecap="round"
+										strokeLinejoin="round"
 									>
-										<path d='M5 12h14'></path>
-										<path d='M12 5l7 7-7 7'></path>
+										<path d="M5 12h14"></path>
+										<path d="M12 5l7 7-7 7"></path>
 									</svg>
 								</div>
 								{/*<div className='absolute bottom-0 left-0 mt-2 flex w-full justify-center py-4 text-center leading-none'>*/}
@@ -70,24 +81,26 @@ const MainTwoCard = () => {
 								{/*</div>*/}
 							</div>
 						</div>
-						<div className='p-4 lg:w-1/2'>
-							<div className='relative h-full overflow-hidden rounded-lg bg-gray-100 bg-opacity-75 px-8 pb-24 pt-16 text-center'>
-								<h2 className='title-font mb-1 text-xs font-medium tracking-widest text-gray-400'>CATEGORY</h2>
-								<h1 className='title-font mb-3 text-xl font-medium text-gray-900 sm:text-2xl'>모의주식방</h1>
-								<p className='mb-3 leading-relaxed'>준비중</p>
-								<div className='inline-flex items-center text-indigo-500'>
+						<div className="p-4 lg:w-1/2">
+							<div
+								className="relative h-full overflow-hidden rounded-lg bg-gray-100 bg-opacity-75 px-8 pb-24 pt-16 text-center"
+								onClick={ready}>
+								<h2 className="title-font mb-1 text-xs font-medium tracking-widest text-gray-400">CATEGORY</h2>
+								<h1 className="title-font mb-3 text-xl font-medium text-gray-900 sm:text-2xl">모의주식방</h1>
+								<p className="mb-3 leading-relaxed">준비중</p>
+								<div className="inline-flex items-center text-indigo-500">
 									바로가기
 									<svg
-										className='ml-2 h-4 w-4'
-										viewBox='0 0 24 24'
-										stroke='currentColor'
-										strokeWidth='2'
-										fill='none'
-										strokeLinecap='round'
-										strokeLinejoin='round'
+										className="ml-2 h-4 w-4"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+										strokeWidth="2"
+										fill="none"
+										strokeLinecap="round"
+										strokeLinejoin="round"
 									>
-										<path d='M5 12h14'></path>
-										<path d='M12 5l7 7-7 7'></path>
+										<path d="M5 12h14"></path>
+										<path d="M12 5l7 7-7 7"></path>
 									</svg>
 								</div>
 								{/*<div className='absolute bottom-0 left-0 mt-2 flex w-full justify-center py-4 text-center leading-none'>*/}

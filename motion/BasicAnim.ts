@@ -22,6 +22,81 @@ export const basicAnim = {
 	},
 }
 
+export const basicAlertAnim = {
+	initial: {
+		y: '-100%',
+		opacity: 0.5,
+		transition: {
+			type: 'spring',
+			damping: 20,
+		},
+	},
+	animate: {
+		y: '0%',
+		opacity: 1,
+		transition: {
+			type: 'spring',
+			damping: 20,
+		},
+	},
+	exit: {
+		y: '-100%',
+		opacity: 0,
+		transition: {
+			type: 'spring',
+			damping: 20,
+		},
+	},
+}
+
+export const basicToastAnim = {
+	initial: {
+		opacity: 0,
+		transition: {
+			type: 'spring',
+			duration: 1,
+		},
+	},
+	animate: {
+		opacity: 1,
+		transition: {
+			type: 'spring',
+			duration: 1.0,
+		},
+	},
+	exit: {
+		opacity: 0,
+		transition: {
+			type: 'spring',
+			duration: 0.3,
+		},
+	},
+}
+
+export const basicConfirmAnim = {
+	initial: {
+		opacity: 0,
+		transition: {
+			type: 'spring',
+			duration: 1,
+		},
+	},
+	animate: {
+		opacity: 1,
+		transition: {
+			type: 'spring',
+			duration: 1.0,
+		},
+	},
+	exit: {
+		opacity: 0,
+		transition: {
+			type: 'spring',
+			duration: 0.3,
+		},
+	},
+}
+
 export const basicLeftSidebarAnim = {
 	initial: {
 		x: '-100%',

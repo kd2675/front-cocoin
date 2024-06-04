@@ -7,7 +7,7 @@ const ModalBg = () => {
 		document.body.style.cssText = `
     		position: fixed; 
     		top: -${window.scrollY}px;
-    		overflow-y: scroll;
+    		overflow-y: hidden;
     		width: 100%;`
 		return () => {
 			const scrollY = document.body.style.top
@@ -15,7 +15,7 @@ const ModalBg = () => {
 			window.scrollTo(0, parseInt(scrollY || '0', 10) * -1)
 		}
 	}, [])
-	return <></>
+	return <div className={'fixed bg-fixed bg-black opacity-70 top-0 left-0 w-full h-full '}></div>
 }
 
 export default ModalBg

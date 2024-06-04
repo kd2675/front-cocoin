@@ -13,6 +13,8 @@ import StoreProvider from '@/app/StoreProvider'
 import AlertUtil from '@utils/alertUtil'
 import { useSelector } from 'react-redux'
 import { RootState } from '@redux/store'
+import ToastUtil from '@utils/toastUtil'
+import ConfirmUtil from '@utils/confirmUtil'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,8 +32,10 @@ export default function RootLayout({
 		<html className='h-full bg-white' lang='kr'>
 			<body className={inter.className + ' h-full'}>
 				<StoreProvider>
-					<AlertUtil />
 					{children}
+					<ConfirmUtil />
+					<ToastUtil />
+					<AlertUtil />
 				</StoreProvider>
 			</body>
 		</html>

@@ -3,7 +3,7 @@ import { call, getContext, put, takeLeading, select } from '@redux-saga/core/eff
 import { insSignUp, InsSignUpParamType, LoginParamType, loginV1, logoutV1, tokenRefreshV1, userInfo, UserInfoType } from '@api/auth'
 import { PayloadAction } from '@reduxjs/toolkit'
 import {authActions, TokenType} from '@redux/reducers/auth'
-import { alertActions } from '@redux/reducers/alert'
+import { modalActions } from 'redux/reducers/modal'
 import { NextRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 
@@ -13,9 +13,9 @@ function* signUpSaga(action: PayloadAction<InsSignUpParamType>) {
 	try {
 		yield call(insSignUp, action.payload)
 		yield router.replace('/')
-		yield put(alertActions.addAlert({ msg: '회원가입을 축하드려요!', type: 'suc' }))
+		yield put(modalActions.addAlert({ msg: '회원가입을 축하드려요!', type: 'suc' }))
 	} catch (err) {
-		yield put(alertActions.addAlert({ msg: '회원가입에 실패하였습니다.', type: 'danger' }))
+		yield put(modalActions.addAlert({ msg: '회원가입에 실패하였습니다.', type: 'danger' }))
 	}
 }
 
@@ -28,13 +28,13 @@ function* loginSaga(action: PayloadAction<LoginParamType>) {
 		console.log('loginSaga', data)
 		yield call(tokenRefreshSaga)
 		// yield call(setAuthorizationToken, data.accessToken)
-		yield put(alertActions.addAlert({ msg: '로그인 성공!.' }))
+		yield put(modalActions.addAlert({ msg: '로그인 성공!.' }))
 		// yield put(authActions.setIsToken('y'))
 
 		yield router.push('/')
 	} catch (err) {
 		// yield put(authActions.loginFail())
-		yield put(alertActions.addAlert({ msg: '로그인에 실패하였습니다.', type: 'danger' }))
+		yield put(modalActions.addAlert({ msg: '로그인에 실패하였습니다.', type: 'danger' }))
 		console.log('loginFailSaga')
 		console.error(err)
 	}

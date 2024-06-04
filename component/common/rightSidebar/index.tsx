@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { mainActions } from '@redux/reducers/main'
 import BasicRightSidebar from "@component/common/rightSidebar/BasicRightSidebar";
 import {basicRightSidebarAnim} from "@motion/BasicAnim";
-import ModalBg from '@component/common/modalBg'
+import ModalBg from 'component/common/modal/modalBg'
 import { RootState } from '@redux/store'
 
 const Index = () => {

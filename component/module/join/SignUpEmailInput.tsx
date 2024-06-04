@@ -4,7 +4,7 @@ import BasicInput from '@component/common/input/BasicInput'
 import { selSignUpEmailCheck } from '@api/auth'
 import { SignUpRegisterSchemaType } from '@schema/signUp'
 import { useDispatch, useSelector } from 'react-redux'
-import { alertActions } from '@redux/reducers/alert'
+import { alertActions } from 'redux/reducers/modal'
 
 type PropsType = {
 	register: UseFormRegisterReturn<keyof SignUpRegisterSchemaType>

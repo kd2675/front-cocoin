@@ -1,15 +1,15 @@
 import {all, put} from "@redux-saga/core/effects";
-import {alertActions} from "@redux/reducers/alert";
-import {Alert} from "@redux/types/alertType";
+import { AlertType, modalActions } from 'redux/reducers/modal'
 import main from "@redux/saga/main";
+import auth from '@redux/saga/auth'
 
 export default function* rootSagas() {
-    yield all([...main,])
+    yield all([...main, ...auth])
 }
 
-export function* addAlert({msg}:{msg:Alert}) {
+export function* addAlert({msg}:{msg:AlertType}) {
     try {
-        yield put(alertActions.addAlert(msg))
+        yield put(modalActions.addAlert(msg))
         console.log("loginSuccessSaga")
     } catch (err) {
         console.error(err)

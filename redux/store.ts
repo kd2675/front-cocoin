@@ -7,8 +7,7 @@ import { configureStore, Reducer, AnyAction, ThunkAction, Action, CombinedState,
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import { combineReducers } from 'redux'
 import auth from '@redux/reducers/auth'
-import alert from '@redux/reducers/alert'
-import { Alert } from '@redux/types/alertType'
+import modal, { AlertType, ModalReducerType } from 'redux/reducers/modal'
 import main, { MainReducerType } from '@redux/reducers/main'
 import createSagaMiddleware from '@redux-saga/core'
 import Router from 'next/router'
@@ -19,9 +18,9 @@ import {AuthReducerType} from "@redux/reducers/auth";
 // ### 리듀서 State 타입 정의
 export interface ReducerStates {
 	auth: AuthReducerType
-	alert: Alert[]
 	main: MainReducerType
 	menu: MenuReducerType
+	modal: ModalReducerType
 }
 
 // ### 루트 리듀서 생성
@@ -38,9 +37,9 @@ const rootReducer = (state: ReducerStates, action: AnyAction): CombinedState<Red
 		default: {
 			const combinedReducer = combineReducers({
 				auth,
-				alert,
 				main,
-				menu
+				menu,
+				modal,
 			})
 			return combinedReducer(state, action)
 		}

@@ -10,7 +10,7 @@ import { FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from 'react-
 import { SignUpRegisterSchema, SignUpRegisterSchemaType } from '@schema/signUp'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { authActions } from '@redux/reducers/auth'
-import { alertActions } from '@redux/reducers/alert'
+import { alertActions } from 'redux/reducers/modal'
 // import { signUpActions } from '@redux/reducers/signUp'
 import SignUpEmailInput from '@component/module/join/SignUpEmailInput'
 import SignUpPwdInput from '@component/module/join/SignUpPwdInput'
