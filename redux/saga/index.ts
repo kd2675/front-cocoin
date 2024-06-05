@@ -1,10 +1,10 @@
 import {all, put} from "@redux-saga/core/effects";
 import { AlertType, modalActions } from 'redux/reducers/modal'
-import main from "@redux/saga/main";
+import common from "redux/saga/common";
 import auth from '@redux/saga/auth'
 
 export default function* rootSagas() {
-    yield all([...main, ...auth])
+    yield all([...common, ...auth])
 }
 
 export function* addAlert({msg}:{msg:AlertType}) {

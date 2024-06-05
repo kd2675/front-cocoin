@@ -1,21 +1,26 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export type MainReducerType = {
+export type CommonReducerType = {
+	health: number
 	select: number
 	isLeftSidebar: 'y' | 'n'
 	isRightSidebar: 'y' | 'n'
 }
 
-const initState: MainReducerType = {
+const initState: CommonReducerType = {
+	health: 0,
 	select: 1,
 	isLeftSidebar: 'n',
 	isRightSidebar: 'n',
 }
 
-const mainReducer = createSlice({
-	name: 'main',
+const commonReducer = createSlice({
+	name: 'common',
 	initialState: initState,
 	reducers: {
+		setHealth: (state, action: PayloadAction<number>) => {
+			state.health = action.payload
+		},
 		setSelect: (state, action: PayloadAction<number>) => {
 			state.select = action.payload
 		},
@@ -48,7 +53,7 @@ const mainReducer = createSlice({
 	},
 })
 
-const { actions, reducer: main } = mainReducer
+const { actions, reducer: common } = commonReducer
 
-export const mainActions = actions
-export default main
+export const commonActions = actions
+export default common

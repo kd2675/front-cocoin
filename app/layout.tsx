@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@redux/store'
 import ToastUtil from '@utils/toastUtil'
 import ConfirmUtil from '@utils/confirmUtil'
+import React from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -36,6 +37,7 @@ export default function RootLayout({
 					<ConfirmUtil />
 					<ToastUtil />
 					<AlertUtil />
+					<div id={'root-modal'}></div>
 				</StoreProvider>
 			</body>
 		</html>

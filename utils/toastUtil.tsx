@@ -12,7 +12,7 @@ const ToastUtil = () => {
 	const dispatch = useDispatch()
 	const modal: ModalReducerType = useSelector((state: RootState) => state.modal)
 
-	const closeCallback = () => {
+	const closeFunc = () => {
 		dispatch(modalActions.deleteToast())
 	}
 
@@ -27,12 +27,16 @@ const ToastUtil = () => {
 					animate={basicToastAnim.animate}
 					exit={basicToastAnim.exit}
 				>
-					{
-						modal.toast.length > 0
-						&& modal.toast[0]?.type == null
-						&&
-						<BasicToast uuid={modal.toast[0].uuid} msg={modal.toast[0].msg} closeCallback={closeCallback}></BasicToast>
-					}
+					{modal.toast.length > 0 && modal.toast[0]?.type == null && (
+						<BasicToast
+							uuid={modal.toast[0].uuid}
+							msg={modal.toast[0].msg}
+							closeFunc={closeFunc}
+							openCallback={modal.toast[0].openCallback}
+							closeCallback={modal.toast[0].closeCallback}
+							btnFunc={modal.toast[0].btnFunc}
+						></BasicToast>
+					)}
 				</motion.div>
 			</AnimatePresence>
 		</>

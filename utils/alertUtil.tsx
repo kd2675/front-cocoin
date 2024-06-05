@@ -32,10 +32,6 @@ const AlertUtil = () => {
 		}
 	}, [modal])
 
-	const closeCallback = () => {
-		dispatch(modalActions.deleteAlert())
-	}
-
 	return (
 		<>
 			<AnimatePresence>
@@ -47,16 +43,46 @@ const AlertUtil = () => {
 					animate={basicAlertAnim.animate}
 					exit={basicAlertAnim.exit}
 				>
-					{modal.alert.length > 0 && modal.alert[0]?.type == null &&
-						<BasicAlert uuid={modal.alert[0].uuid} msg={modal.alert[0].msg} closeCallback={closeCallback}></BasicAlert>}
-					{modal.alert.length > 0 && modal.alert[0]?.type == 'info' &&
-						<AlertInfo uuid={modal.alert[0].uuid} msg={modal.alert[0].msg} closeCallback={closeCallback}></AlertInfo>}
-					{modal.alert.length > 0 && modal.alert[0]?.type == 'danger' &&
-						<AlertDanger uuid={modal.alert[0].uuid} msg={modal.alert[0].msg} closeCallback={closeCallback}></AlertDanger>}
-					{modal.alert.length > 0 && modal.alert[0]?.type == 'suc' &&
-						<AlertSuc uuid={modal.alert[0].uuid} msg={modal.alert[0].msg} closeCallback={closeCallback}></AlertSuc>}
-					{modal.alert.length > 0 && modal.alert[0]?.type == 'warn' &&
-						<AlertWarn uuid={modal.alert[0].uuid} msg={modal.alert[0].msg} closeCallback={closeCallback}></AlertWarn>}
+					{modal.alert.length > 0 && modal.alert[0]?.type == null && (
+						<BasicAlert
+							uuid={modal.alert[0].uuid}
+							msg={modal.alert[0].msg}
+							openCallback={modal.alert[0].openCallback}
+							closeCallback={modal.alert[0].closeCallback}
+						></BasicAlert>
+					)}
+					{modal.alert.length > 0 && modal.alert[0]?.type == 'info' && (
+						<AlertInfo
+							uuid={modal.alert[0].uuid}
+							msg={modal.alert[0].msg}
+							openCallback={modal.alert[0].openCallback}
+							closeCallback={modal.alert[0].closeCallback}
+						></AlertInfo>
+					)}
+					{modal.alert.length > 0 && modal.alert[0]?.type == 'danger' && (
+						<AlertDanger
+							uuid={modal.alert[0].uuid}
+							msg={modal.alert[0].msg}
+							openCallback={modal.alert[0].openCallback}
+							closeCallback={modal.alert[0].closeCallback}
+						></AlertDanger>
+					)}
+					{modal.alert.length > 0 && modal.alert[0]?.type == 'suc' && (
+						<AlertSuc
+							uuid={modal.alert[0].uuid}
+							msg={modal.alert[0].msg}
+							openCallback={modal.alert[0].openCallback}
+							closeCallback={modal.alert[0].closeCallback}
+						></AlertSuc>
+					)}
+					{modal.alert.length > 0 && modal.alert[0]?.type == 'warn' && (
+						<AlertWarn
+							uuid={modal.alert[0].uuid}
+							msg={modal.alert[0].msg}
+							openCallback={modal.alert[0].openCallback}
+							closeCallback={modal.alert[0].closeCallback}
+						></AlertWarn>
+					)}
 				</motion.div>
 			</AnimatePresence>
 		</>

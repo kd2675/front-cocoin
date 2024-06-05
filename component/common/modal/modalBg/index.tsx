@@ -1,8 +1,17 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React, { ReactNode, useEffect } from 'react'
+import { ModalReducerType } from '@redux/reducers/modal'
+import { useSelector } from 'react-redux'
+import { RootState } from '@redux/store'
 
-const ModalBg = () => {
+type PropsType = {
+	closeFunc?: () => void
+}
+
+const ModalBg = (props: PropsType) => {
+	const modal: ModalReducerType = useSelector((state: RootState) => state.modal)
+
 	useEffect(() => {
 		document.body.style.cssText = `
     		position: fixed; 
@@ -10,12 +19,20 @@ const ModalBg = () => {
     		overflow-y: hidden;
     		width: 100%;`
 		return () => {
-			const scrollY = document.body.style.top
-			document.body.style.cssText = ''
-			window.scrollTo(0, parseInt(scrollY || '0', 10) * -1)
+			if (modal.toast.length + modal.confirm.length > 1) {
+			} else {
+				const scrollY = document.body.style.top
+				document.body.style.cssText = ''
+				window.scrollTo(0, parseInt(scrollY || '0', 10) * -1)
+			}
 		}
 	}, [])
-	return <div className={'fixed bg-fixed bg-black opacity-70 top-0 left-0 w-full h-full '}></div>
+	return (
+		<div
+			className={'fixed left-0 top-0 h-full w-full bg-black bg-fixed opacity-70'}
+			onClick={props.closeFunc ? props.closeFunc : () => {}}
+		></div>
+	)
 }
 
 export default ModalBg

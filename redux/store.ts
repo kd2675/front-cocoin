@@ -3,22 +3,21 @@
 // 2. store 생성함수를 만든다.
 // 3. next-redux-wrapper 라이브러리의 wrapper를 만들어 export 해준다.
 
-import { configureStore, Reducer, AnyAction, ThunkAction, Action, CombinedState, getDefaultMiddleware } from '@reduxjs/toolkit'
-import { HYDRATE, createWrapper } from 'next-redux-wrapper'
+import { Action, AnyAction, CombinedState, configureStore, Reducer, ThunkAction } from '@reduxjs/toolkit'
+import { createWrapper, HYDRATE } from 'next-redux-wrapper'
 import { combineReducers } from 'redux'
-import auth from '@redux/reducers/auth'
-import modal, { AlertType, ModalReducerType } from 'redux/reducers/modal'
-import main, { MainReducerType } from '@redux/reducers/main'
+import auth, { AuthReducerType } from '@redux/reducers/auth'
+import modal, { ModalReducerType } from 'redux/reducers/modal'
+import common, { CommonReducerType } from 'redux/reducers/common'
 import createSagaMiddleware from '@redux-saga/core'
 import Router from 'next/router'
 import rootSagas from '@redux/saga'
 import menu, { MenuReducerType } from '@redux/reducers/menu'
-import {AuthReducerType} from "@redux/reducers/auth";
 
 // ### 리듀서 State 타입 정의
 export interface ReducerStates {
 	auth: AuthReducerType
-	main: MainReducerType
+	common: CommonReducerType
 	menu: MenuReducerType
 	modal: ModalReducerType
 }
@@ -37,7 +36,7 @@ const rootReducer = (state: ReducerStates, action: AnyAction): CombinedState<Red
 		default: {
 			const combinedReducer = combineReducers({
 				auth,
-				main,
+				common,
 				menu,
 				modal,
 			})
@@ -49,7 +48,6 @@ const rootReducer = (state: ReducerStates, action: AnyAction): CombinedState<Red
 // ### store 생성 함수
 export const makeStore = () => {
 	// 미들웨어 추가 (필요 없으면 생략)
-	const middleware = getDefaultMiddleware()
 	const sagaMiddleware = createSagaMiddleware({
 		context: {
 			router: Router,
@@ -64,7 +62,19 @@ export const makeStore = () => {
 	const store = configureStore({
 		reducer: rootReducer as Reducer<ReducerStates, AnyAction>, // 리듀서
 		// middleware, // 미들웨어
-		middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), sagaMiddleware]
+		middleware: (getDefaultMiddleware) => [
+			...getDefaultMiddleware({
+				serializableCheck: {
+					// Ignore these action types
+					ignoredActions: ['modal/addConfirm', 'modal/addToast'],
+					// Ignore these field paths in all actions
+					ignoredActionPaths: ['payload.btn1Fuc', 'payload.btn2Fuc', 'payload.btnFuc', 'payload.openCallback', 'payload.closeCallback'],
+					// Ignore these paths in the state
+					ignoredPaths: ['modal.confirm', 'modal.toast'],
+				},
+			}),
+			sagaMiddleware,
+		],
 		// devTools: process.env.NODE_ENV === 'development' // 개발자도구
 	})
 	sagaMiddleware.run(rootSagas)

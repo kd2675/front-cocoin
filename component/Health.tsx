@@ -1,8 +1,22 @@
 'use client'
 import { useHealth } from '@service/health/useHealthService'
+import { useRouter } from 'next/navigation'
+import { useDispatch } from 'react-redux'
+import { commonActions } from '@redux/reducers/common'
+import { useEffect } from 'react'
 
 export default function Health() {
+	const router = useRouter()
+	const dispatch = useDispatch()
+
 	const health = useHealth()
-	console.log(health)
-	return <>{health && <h2>{health.data?.data}</h2>}</>
+
+	useEffect(() => {
+		dispatch(commonActions.setHealth(health ? 1 : 0))
+	}, [])
+
+	const goBack = () => {
+		router.back()
+	}
+	return <>{health && <h2 onClick={goBack}>{health.data?.data}</h2>}</>
 }

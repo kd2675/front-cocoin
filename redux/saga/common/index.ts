@@ -1,6 +1,6 @@
 import { call, getContext, put, takeLeading } from '@redux-saga/core/effects'
 import { PayloadAction } from '@reduxjs/toolkit'
-import { mainActions } from '@redux/reducers/main'
+import { commonActions } from 'redux/reducers/common'
 import { modalActions } from 'redux/reducers/modal'
 import { NextRouter } from 'next/router'
 import { QueryClient } from '@tanstack/query-core'

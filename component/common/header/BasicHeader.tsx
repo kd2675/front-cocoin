@@ -3,7 +3,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation'
-import { mainActions } from '@redux/reducers/main'
+import { commonActions } from 'redux/reducers/common'
 import Image from 'next/image'
 
 const BasicHeader = () => {

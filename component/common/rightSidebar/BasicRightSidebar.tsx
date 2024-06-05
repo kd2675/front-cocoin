@@ -9,7 +9,7 @@ import BasicRightSidebarA from '@component/common/rightSidebar/BasicRightSidebar
 import BasicRightSidebarB from '@component/common/rightSidebar/BasicRightSidebarB'
 import BasicRightSidebarC from '@component/common/rightSidebar/BasicRightSidebarC'
 import { useDispatch, useSelector } from 'react-redux'
-import { mainActions } from '@redux/reducers/main'
+import { commonActions } from 'redux/reducers/common'
 import { useRouter } from 'next/navigation'
 import { RootState } from '@redux/store'
 
@@ -37,7 +37,7 @@ const BasicRightSidebar = () => {
 	}
 
 	const closeOnClick = () => {
-		dispatch(mainActions.isRightSidebar('n'))
+		dispatch(commonActions.isRightSidebar('n'))
 	}
 
 	return (

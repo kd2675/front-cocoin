@@ -21,9 +21,13 @@ const usePortal = () => {
 	const portal = ({ children }: { children: React.ReactNode }) => {
 		return mounted && ref.current && isOpen
 			? createPortal(
-					<div className="z-40 fixed flex w-full h-full justify-center align-middle top-0 left-0">
-						<div className="absolute w-full h-full bg-black opacity-50" role="presentation" onClick={closePortal} />
-						<div className="flex flex-col justify-center align-middle">{children}</div>
+					<div className='fixed left-0 top-0 z-40 flex justify-center align-middle'>
+						<div
+							className='fixed left-0 top-0 h-full w-full bg-black opacity-50'
+							role='presentation'
+							onClick={closePortal}
+						/>
+						<div className='relative'>{children}</div>
 					</div>,
 					ref.current
 			  )

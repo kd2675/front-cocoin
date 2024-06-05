@@ -8,11 +8,11 @@ import { basicConfirmAnim } from '@motion/BasicAnim'
 import BasicConfirm from '@component/common/modal/confirm/BasicConfirm'
 import React from 'react'
 
-const AlertUtil = () => {
+const ConfirmUtil = () => {
 	const dispatch = useDispatch()
 	const modal: ModalReducerType = useSelector((state: RootState) => state.modal)
 
-	const closeCallback = () => {
+	const closeFunc = () => {
 		dispatch(modalActions.deleteConfirm())
 	}
 
@@ -27,15 +27,21 @@ const AlertUtil = () => {
 					animate={basicConfirmAnim.animate}
 					exit={basicConfirmAnim.exit}
 				>
-					{
-						modal.confirm.length > 0
-						&& modal.confirm[0]?.type == null
-						&& <BasicConfirm uuid={modal.confirm[0].uuid} msg={modal.confirm[0].msg} closeCallback={closeCallback}></BasicConfirm>
-					}
+					{modal.confirm.length > 0 && modal.toast.length === 0 && modal.confirm[0]?.type == null && (
+						<BasicConfirm
+							uuid={modal.confirm[0].uuid}
+							msg={modal.confirm[0].msg}
+							closeFunc={closeFunc}
+							openCallback={modal.confirm[0].openCallback}
+							closeCallback={modal.confirm[0].closeCallback}
+							btn1Func={modal.confirm[0].btn1Func}
+							btn2Func={modal.confirm[0].btn2Func}
+						></BasicConfirm>
+					)}
 				</motion.div>
 			</AnimatePresence>
 		</>
 	)
 }
 
-export default AlertUtil
+export default ConfirmUtil

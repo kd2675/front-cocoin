@@ -1,22 +1,30 @@
 import React, { useEffect } from 'react'
 import Image from 'next/image'
-import BasicModal from '@component/modul/common/BasicModal'
 import usePortal from '@hooks/usePortal'
 
 const TestLoginForm = () => {
 	const testLoginPortal = usePortal()
+	const testLoginPortal2 = usePortal()
 
 	return (
 		<>
 			{/*<div className="flex h-screen w-full items-center justify-center bg-gray-900 bg-cover bg-no-repeat"*/}
 			{/*     style="background-image:url('https://images.unsplash.com/photo-1499123785106-343e69e68db1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1748&q=80')">*/}
-			<testLoginPortal.portal>
-				<BasicModal></BasicModal>
-			</testLoginPortal.portal>
+
 			<div className="flex w-full items-center justify-center bg-white bg-cover bg-no-repeat rounded-lg">
 				<div className="rounded-xl bg-white bg-opacity-50 px-16 py-10 shadow-lg backdrop-blur-md max-sm:px-8">
 					<div className="text-black">
 						<div className="mb-8 flex flex-col items-center">
+							<button type={'button'} onClick={testLoginPortal.openPortal}>test</button>
+							<testLoginPortal.portal>
+								<button type={'button'} onClick={testLoginPortal2.openPortal}>test</button>
+
+								<div className={'bg-white'}>testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest</div>
+							</testLoginPortal.portal>
+							<testLoginPortal2.portal>
+
+								<div>tasdasdasdasdasdasdasdasdaszxczxczxczxczxczxczxczxczxc</div>
+							</testLoginPortal2.portal>
 							<Image src={'/limepiece1.png'} alt={'메인이미지'} width={150} height={150}></Image>
 							<h1 className="mb-2 text-2xl">LIMEPiece</h1>
 							<span className="text-gray-800">Enter Login Details</span>

@@ -4,29 +4,35 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { v4 } from 'uuid'
-import { ReactNode } from 'react'
+import { MouseEventHandler, ReactNode } from 'react'
 
 export type AlertType = {
-	msg: ReactNode | string;
 	uuid?: string;
+	msg: ReactNode | string;
 	type?: null | 'info' | 'danger' | 'suc' | 'warn';
+	openCallback?: Function
+	closeCallback?: Function
 }
 
 export type ToastType = {
-	msg: ReactNode | string;
 	uuid?: string;
+	msg: ReactNode | string;
 	type?: null | 'info' | 'danger' | 'suc' | 'warn';
-	btnFuc?: Function;
+	btnFunc?: ()=>void;
+	openCallback?: ()=>void;
+	closeCallback?: ()=>void;
 }
 
 export type ConfirmType = {
-	msg: ReactNode | string;
 	uuid?: string;
+	msg: ReactNode | string;
 	type?: null | 'info' | 'danger' | 'suc' | 'warn';
 	btn1Text?: string;
-	btn1Fuc?: Function
+	btn1Func?: ()=>void;
 	btn2Text?: string;
-	btn2Fuc?: Function;
+	btn2Func?: ()=>void;
+	openCallback?: ()=>void;
+	closeCallback?: ()=>void;
 }
 
 export type ModalReducerType = {

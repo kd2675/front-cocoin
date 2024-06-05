@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/navigation'
-import { mainActions } from '@redux/reducers/main'
+import { commonActions } from 'redux/reducers/common'
 import BasicRightSidebar from "@component/common/rightSidebar/BasicRightSidebar";
 import {basicRightSidebarAnim} from "@motion/BasicAnim";
 import ModalBg from 'component/common/modal/modalBg'
