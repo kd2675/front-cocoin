@@ -1,5 +1,5 @@
 import { useInfiniteQuery, useQueries, useQuery } from '@tanstack/react-query'
-import { selNotice, selNoticeList } from '@api/notice'
+import { selNotice, selNoticeList } from 'api/deprecated/notice'
 
 // export const infiniteQuerySelNoticeList = () => {
 // 	return useInfiniteQuery(

@@ -1,6 +1,6 @@
-import cookie from "cookie"
 import {NextApiRequest} from "next";
+import { cookies } from 'next/headers'
 
 export const parseCookies = (req : any) => {
-    return cookie.parse(req ? req.headers.cookie || "" : document.cookie)
+    return cookies().get(req ? req.headers.cookie || "" : document.cookie)
 }

@@ -10,7 +10,7 @@ import { FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from 'react-
 import { SignUpRegisterSchema, SignUpRegisterSchemaType } from '@schema/signUp'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { authActions } from '@redux/reducers/auth'
-import { alertActions } from 'redux/reducers/modal'
+import { modalActions } from 'redux/reducers/modal'
 // import { signUpActions } from '@redux/reducers/signUp'
 import SignUpEmailInput from '@component/module/join/SignUpEmailInput'
 import SignUpPwdInput from '@component/module/join/SignUpPwdInput'
@@ -18,7 +18,7 @@ import SignUpPwdCheckInput from '@component/module/join/SignUpPwdCheckInput'
 import SignUpNameInput from '@component/module/join/SignUpNameInput'
 import SignUpPhoneInput from '@component/module/join/SignUpPhoneInput'
 import SignUpNickInput from '@component/module/join/SignUpNickInput'
-import { insSignUp } from '@api/auth'
+import { insSignUp } from 'api/deprecated/auth'
 
 const Index = () => {
 	const dispatch = useDispatch()
@@ -59,7 +59,7 @@ const Index = () => {
 		let value = Object.values(data)[0]
 		console.log('submitData : ', data)
 
-		dispatch(alertActions.addAlert({ msg: value.message, type: 'danger' }))
+		dispatch(modalActions.addAlert({ msg: value.message, type: 'danger' }))
 	}
 
 	useEffect(() => {
@@ -85,7 +85,7 @@ const Index = () => {
 											}}
 										></button>
 									</div>
-									<h1 className="justify-center text-center text-2xl font-bold text-gray-500 mb-4">SignUp</h1>
+									<h1 className="justify-center text-center text-2xl font-bold text-gray-500 mb-4">가입하기</h1>
 									<div className={'flex-1 justify-end'}></div>
 								</div>
 								<div className="md:grid md:grid-cols-3 md:gap-6">
@@ -111,7 +111,7 @@ const Index = () => {
 														}}
 														disabled={methods.formState.isSubmitting}
 													>
-														SignUp!
+														가입!
 													</button>
 												</div>
 											</div>

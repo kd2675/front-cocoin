@@ -1,5 +1,5 @@
 import React from 'react'
-import { UserInfoType } from '@api/auth'
+import { UserInfoType } from 'api/deprecated/auth'
 
 type PropsType = UserInfoType
 const BasicRightSidebarA = (props: PropsType) => {

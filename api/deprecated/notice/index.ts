@@ -1,4 +1,4 @@
-import { axios, BaseResponseType, BasePageableType } from '@api/index'
+import { axios, BaseResponseType, BasePageableType } from '@/api'
 
 export const selNoticeList = async ({pageNo, pagePerCnt}: {pageNo:number, pagePerCnt: number}) => {
 	return await axios.get<BaseResponseType<BasePageableType<NoticeType>>>(`/api/subuk/ctf/notice/list?pageNo=${pageNo}&pagePerCnt=${pagePerCnt}`)

@@ -1,5 +1,12 @@
-import Service from '@/service/Service';
-import { Photo } from '@/types/Photo'
+import Service from '@api/service/Service';
+
+export interface Photo {
+	albumId: number;
+	id: number;
+	thumbnailUrl: string;
+	title: string;
+	url: string;
+}
 
 class PhotoService extends Service {
 	getPhotos() {

@@ -2,6 +2,14 @@ import { useRouter } from 'next/navigation'
 
 export type LinkType = 'push' | 'replace'
 
+export const goHomeRoute = () => {
+	const router = useRouter()
+	const goPage = ({ type }: { type: LinkType }) => {
+		router[type]('/', {})
+	}
+	return goPage
+}
+
 export const goHealthRoute = () => {
 	const router = useRouter()
 	const goPage = ({ type }: { type: LinkType }) => {

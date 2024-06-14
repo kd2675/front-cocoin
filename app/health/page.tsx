@@ -1,13 +1,13 @@
-// @flow
-
-import * as React from 'react'
+import queryOptions from '@api/service/health/queries'
 import { getDehydratedQuery, Hydrate } from '@query/reactQuery'
-import queryOptions from '@service/health/queries'
 import Health from '@component/Health'
+import * as React from 'react'
 
-type Props = {}
+type PropsType = {
 
-export default async function Page(props: Props) {
+};
+
+const Page = async (props: PropsType) => {
 	const { queryKey, queryFn } = queryOptions.health();
 	const query = await getDehydratedQuery({ queryKey, queryFn });
 
@@ -21,4 +21,7 @@ export default async function Page(props: Props) {
 			</Hydrate>
 		</div>
 	)
+
 }
+
+export default Page

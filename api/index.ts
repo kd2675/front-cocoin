@@ -1,8 +1,6 @@
 import axiosLib from 'axios'
-import {useSelector} from "react-redux";
-import {RootState} from "@redux/store";
-import {TokenType} from "@redux/reducers/auth";
-import {tokenRefreshV1} from "@api/auth";
+import { tokenRefreshV1 } from 'api/deprecated/auth'
+import { TokenType } from '@api/service/auth/AuthService'
 
 export type BaseResponseType<t> = {
 	code: number
@@ -13,13 +11,20 @@ export type BaseResponseType<t> = {
 
 export type BasePageableType<t> = {
 	content: t[]
-	pageable: {sort: {empty: boolean, sorted: boolean, unsorted: boolean}, offset: number, pageSize: number, pageNumber: number, unpaged: boolean, paged: boolean}
+	pageable: {
+		sort: { empty: boolean; sorted: boolean; unsorted: boolean }
+		offset: number
+		pageSize: number
+		pageNumber: number
+		unpaged: boolean
+		paged: boolean
+	}
 	last: boolean
 	totalPages: number
 	totalElements: number
 	size: number
 	number: number
-	sort: {empty: boolean, sorted: boolean, unsorted: boolean}
+	sort: { empty: boolean; sorted: boolean; unsorted: boolean }
 	numberOfElements: number
 	first: boolean
 	empty: boolean
@@ -27,9 +32,10 @@ export type BasePageableType<t> = {
 
 export const axios = axiosLib.create({
 	baseURL: `${process.env.NEXT_PUBLIC_API_SERVER_URL}`, // typeof location !== "undefined"
-	// headers: {
-	// 	'Authorization': useSelector((state: RootState) => state.auth.accessToken)
-	// },
+	headers: {
+		'Auth-header': 'cocoin'
+		// 'Authorization': useSelector((state: RootState) => state.auth.accessToken)
+	},
 	// ? ( location?.origin.indexOf("yeoboya.com") > -1 ? location?.origin : process.env.API_SERVER_URL )
 	// : process.env.API_SERVER_URL,
 	// adapter: cacheAdapterEnhancer(axiosLib.defaults.adapter, { enabledByDefault: false }),
@@ -100,7 +106,7 @@ axios.interceptors.response.use(
 		}
 		// 로그처리나 필요한게 있다면? 추가??
 		return Promise.reject(error)
-	}
+	},
 )
 
 export const setAuthorizationToken = async (token: string) => {

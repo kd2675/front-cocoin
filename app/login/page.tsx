@@ -1,8 +1,6 @@
 import Login from '@component/module/login'
 
-type PropsType = {
-
-};
+type PropsType = {}
 
 const Page = async (props: PropsType) => {
 	return (

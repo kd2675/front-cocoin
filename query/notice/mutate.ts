@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {selNoticeList} from "@api/notice";
+import {selNoticeList} from "api/deprecated/notice";
 
 // export const useInsSiteVisit = () => {
 //     let router = useRouter()

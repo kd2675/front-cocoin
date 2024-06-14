@@ -12,7 +12,7 @@ const Index = () => {
 	const dispatch = useDispatch()
 	const router = useRouter()
 
-	const isRightSidebar = useSelector((state: RootState) => state.main.isRightSidebar)
+	const isRightSidebar = useSelector((state: RootState) => state.common.isRightSidebar)
 
 	// const historyBackHandler = function () {
 	// 	if (router.query?.rightSidebar) {

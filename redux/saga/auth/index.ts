@@ -1,11 +1,12 @@
 import { setAuthorizationToken } from '@api/index'
 import { call, getContext, put, takeLeading, select } from '@redux-saga/core/effects'
-import { insSignUp, InsSignUpParamType, LoginParamType, loginV1, logoutV1, tokenRefreshV1, userInfo, UserInfoType } from '@api/auth'
+import { insSignUp, InsSignUpParamType, LoginParamType, loginV1, logoutV1, tokenRefreshV1, userInfo, UserInfoType } from 'api/deprecated/auth'
 import { PayloadAction } from '@reduxjs/toolkit'
-import {authActions, TokenType} from '@redux/reducers/auth'
+import {authActions} from '@redux/reducers/auth'
 import { modalActions } from 'redux/reducers/modal'
 import { NextRouter } from 'next/router'
 import { useSelector } from 'react-redux'
+import { TokenType } from '@api/service/auth/AuthService'
 
 function* signUpSaga(action: PayloadAction<InsSignUpParamType>) {
 	const router: NextRouter = yield getContext('router')

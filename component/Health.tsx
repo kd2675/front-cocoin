@@ -1,5 +1,6 @@
 'use client'
-import { useHealth } from '@service/health/useHealthService'
+
+import { useHealth } from '@api/service/health/useHealthService'
 import { useRouter } from 'next/navigation'
 import { useDispatch } from 'react-redux'
 import { commonActions } from '@redux/reducers/common'
@@ -18,5 +19,5 @@ export default function Health() {
 	const goBack = () => {
 		router.back()
 	}
-	return <>{health && <h2 onClick={goBack}>{health.data?.data}</h2>}</>
+	return <>{health.data && <h2 onClick={goBack}>{health.data.data}</h2>}</>
 }

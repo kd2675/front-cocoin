@@ -1,4 +1,4 @@
-import PhotoService from '@/service/photo/PhotoService'
+import PhotoService from '@api/service/photo/PhotoService'
 
 const queryKeys = {
 	all: ['photos'] as const,

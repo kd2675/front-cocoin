@@ -1,14 +1,11 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {MenuTabType} from "@redux/reducers/menu";
-import { UserInfoType } from '@api/auth'
+import { UserInfoType } from 'api/deprecated/auth'
+import { TokenType } from '@api/service/auth/AuthService'
 
-export type TokenType = {
-    accessToken: string
-    refreshToken: string
+export type AuthReducerType = {
     userInfo: UserInfoType | null
-}
-
-export type AuthReducerType = {} & TokenType
+} & TokenType
 
 const initState: AuthReducerType = {
 	accessToken: '',

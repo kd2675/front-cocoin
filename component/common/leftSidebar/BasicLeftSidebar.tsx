@@ -2,14 +2,18 @@
 
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { goJoinRoute, goLoginRoute } from '@link/index'
+import { goHomeRoute, goJoinRoute, goLoginRoute } from '@link/index'
 
 const BasicLeftSidebar = () => {
 	const dispatch = useDispatch()
 
+	const homeRoute = goHomeRoute()
 	const loginRoute = goLoginRoute()
 	const joinRoute = goJoinRoute()
 
+	const goHomeOnClick = () => {
+		homeRoute({ type: 'push' })
+	}
 	const goLoginOnClick = () => {
 		loginRoute({ type: 'push' })
 	}
@@ -90,9 +94,9 @@ const BasicLeftSidebar = () => {
 							{/*)}*/}
 
 							<li>
-								<a
-									href='static/component/modul/common#'
-									className='group flex items-center rounded-lg p-2 text-base font-normal hover:bg-gray-200 '
+								<div
+									className='group flex items-center rounded-lg p-2 text-base font-normal hover:bg-gray-200'
+									onClick={goHomeOnClick}
 								>
 									<svg
 										className='h-6 w-6 flex-shrink-0 transition duration-75 group-hover:text-gray-900'
@@ -106,8 +110,8 @@ const BasicLeftSidebar = () => {
 											clipRule='evenodd'
 										></path>
 									</svg>
-									<span className='ml-3 flex-1 whitespace-nowrap'>4번 메뉴</span>
-								</a>
+									<span className='ml-3 flex-1 whitespace-nowrap'>홈</span>
+								</div>
 							</li>
 							{/*<li>*/}
 							{/*	<a href="#" className="text-base font-normal rounded-lg hover:bg-gray-200 flex items-center p-2 group ">*/}
@@ -122,7 +126,10 @@ const BasicLeftSidebar = () => {
 							{/*	</a>*/}
 							{/*</li>*/}
 							<li>
-								<div className='group flex items-center rounded-lg p-2 text-base font-normal hover:bg-gray-200 ' onClick={goLoginOnClick}>
+								<div
+									className='group flex items-center rounded-lg p-2 text-base font-normal hover:bg-gray-200 '
+									onClick={goLoginOnClick}
+								>
 									<svg
 										className='h-6 w-6 flex-shrink-0 transition duration-75 group-hover:text-gray-900'
 										fill='currentColor'
@@ -135,11 +142,14 @@ const BasicLeftSidebar = () => {
 											clipRule='evenodd'
 										></path>
 									</svg>
-									<span className='ml-3 flex-1 whitespace-nowrap'>Sign In</span>
+									<span className='ml-3 flex-1 whitespace-nowrap'>로그인</span>
 								</div>
 							</li>
 							<li>
-								<div className='group flex items-center rounded-lg p-2 text-base font-normal hover:bg-gray-200 ' onClick={goJoinOnClick}>
+								<div
+									className='group flex items-center rounded-lg p-2 text-base font-normal hover:bg-gray-200 '
+									onClick={goJoinOnClick}
+								>
 									<svg
 										className='h-6 w-6 flex-shrink-0 transition duration-75 group-hover:text-gray-900'
 										fill='currentColor'
@@ -152,7 +162,7 @@ const BasicLeftSidebar = () => {
 											clipRule='evenodd'
 										></path>
 									</svg>
-									<span className='ml-3 flex-1 whitespace-nowrap'>Sign Up</span>
+									<span className='ml-3 flex-1 whitespace-nowrap'>가입하기</span>
 								</div>
 							</li>
 						</ul>

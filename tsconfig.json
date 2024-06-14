@@ -40,7 +40,6 @@
       "@link/*": ["link/*"],
       "@reducers/*": ["reducers/*"],
       "@public/*": ["public/*"],
-      "@service/*": ["service/*"],
       "@types/*": ["types/*"]
     }
   },

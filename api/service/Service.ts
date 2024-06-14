@@ -1,11 +1,15 @@
 import { axios } from '@/api'
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { DefaultError } from '@tanstack/query-core'
+
+export type MutationParam = {
+	onSuccess: (data:unknown) => void
+	onError: (error:DefaultError) => void
+}
 
 interface HTTPInstance {
-	get<T>(
-		url: string,
-		config?: AxiosRequestConfig,
-	): Promise<T>;
+	get<T>(url: string, config?: AxiosRequestConfig): Promise<T>
+
 	// delete<T>(
 	// 	url: string,
 	// 	config?: RequestInit,
@@ -18,11 +22,8 @@ interface HTTPInstance {
 	// 	url: string,
 	// 	config?: RequestInit,
 	// ): Promise<T>;
-	post<T>(
-		url: string,
-		data?: unknown,
-		config?: AxiosRequestConfig,
-	): Promise<T>;
+	post<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T>
+
 	// put<T>(
 	// 	url: string,
 	// 	data?: unknown,
@@ -36,18 +37,18 @@ interface HTTPInstance {
 }
 
 class Service {
-	public http: HTTPInstance;
+	public http: HTTPInstance
 
-	private baseURL: string;
+	private baseURL: string
 
-	private headers: Record<string, string>;
+	private headers: Record<string, string>
 
 	constructor() {
-		this.baseURL = `${process.env.NEXT_PUBLIC_API_SERVER_URL}`;
+		this.baseURL = `${process.env.NEXT_PUBLIC_API_SERVER_URL}`
 		this.headers = {
 			csrf: 'token',
 			Referer: this.baseURL,
-		};
+		}
 
 		this.http = {
 			get: this.get.bind(this),
@@ -57,32 +58,43 @@ class Service {
 			post: this.post.bind(this),
 			// put: this.put.bind(this),
 			// patch: this.patch.bind(this),
-		};
+		}
 	}
 
 	private async request<T = unknown>(
 		method: string,
 		url: string,
 		data?: unknown,
-		config?: AxiosRequestConfig,
+		config?: AxiosRequestConfig
 	): Promise<T> {
 		try {
 			if (method === 'get') {
-				const response: AxiosResponse<any, any> = await axios.get(this.baseURL + url, config)
+				const response: AxiosResponse<T> = await axios.get(this.baseURL + url, config)
+				// console.log(response)
 				if (response.status !== 200) {
 					throw new Error('Network response was not ok')
 				}
 
 				return response.data
 			} else if (method === 'post') {
-				const response : AxiosResponse<any, any> = await axios.post(this.baseURL + url, data, config)
+				const response: AxiosResponse<T> = await axios.post(this.baseURL + url, data, config)
+				// console.log(response)
 				if (response.status !== 200) {
-					throw new Error('Network response was not ok');
+					throw new Error('Network response was not ok')
 				}
 
-				return response.data;
+				return response.data
 			}
-			const response : AxiosResponse<any, any> = await axios.get(this.baseURL + url, {})
+
+			const response: AxiosResponse<T> = await axios.get(this.baseURL + url, {})
+			// console.log(response)
+
+			if (response.status !== 200) {
+				throw new Error('Network response was not ok')
+			}
+
+			return response.data
+
 			// const response = await fetch(this.baseURL + url, {
 			// 	method,
 			// 	headers: {
@@ -94,29 +106,17 @@ class Service {
 			// 	body: data ? JSON.stringify(data) : undefined,
 			// 	...config,
 			// });
-
-			console.log(response)
-
-			if (response.status !== 200) {
-				throw new Error('Network response was not ok');
-			}
-
-			return response.data;
-
 			// const responseData: T = await response.json();
 			// console.log(responseData)
 			// return responseData;
 		} catch (error) {
-			console.error('Error:', error);
-			throw error;
+			console.error('Error:', error)
+			throw error
 		}
 	}
 
-	private get<T>(
-		url: string,
-		config?: AxiosRequestConfig,
-	): Promise<T> {
-		return this.request<T>('get', url, undefined, config);
+	private get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
+		return this.request<T>('get', url, undefined, config)
 	}
 
 	// private delete<T>(
@@ -140,12 +140,8 @@ class Service {
 	// 	return this.request<T>('OPTIONS', url, undefined, config);
 	// }
 
-	private post<T>(
-		url: string,
-		data?: unknown,
-		config?: AxiosRequestConfig,
-	): Promise<T> {
-		return this.request<T>('post', url, data, config);
+	private post<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
+		return this.request<T>('post', url, data, config)
 	}
 
 	// private put<T>(
@@ -165,4 +161,4 @@ class Service {
 	// }
 }
 
-export default Service;
+export default Service
