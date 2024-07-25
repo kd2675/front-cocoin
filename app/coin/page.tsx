@@ -1,13 +1,12 @@
-'use client'
+import Lank from '@component/module/coin/Lank'
+import Coin from '@component/module/coin'
 
-type PropsType = {
+type PropsType = {}
 
-};
-
-const Page = (props: PropsType) => {
+const Page = async (props: PropsType) => {
 	return (
 		<>
-
+			<Coin></Coin>
 		</>
 	)
 }

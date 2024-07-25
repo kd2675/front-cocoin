@@ -1,6 +1,6 @@
 import queryOptions from '@api/service/health/queries'
 import { getDehydratedQuery, Hydrate } from '@query/reactQuery'
-import Health from '@component/Health'
+import Health from '@component/module/health/Health'
 import * as React from 'react'
 
 type PropsType = {
