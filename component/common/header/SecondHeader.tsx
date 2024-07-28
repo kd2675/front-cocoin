@@ -1,10 +1,12 @@
 'use client'
 
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/navigation'
 import { commonActions } from 'redux/reducers/common'
 import Image from 'next/image'
+import { menuActions } from '@redux/reducers/menu'
+import { RootState } from '@redux/store'
 
 const BasicHeader = () => {
 	const dispatch = useDispatch()
@@ -16,6 +18,10 @@ const BasicHeader = () => {
 	// 	router.reload()
 	// }
 
+	const onOffMenu = () => {
+		dispatch(menuActions.toggleIsMenu())
+	}
+
 	return (
 		<>
 			<nav className='block w-full max-w-full rounded-xl bg-transparent px-0 py-1 text-white shadow-none transition-all'>
@@ -26,7 +32,7 @@ const BasicHeader = () => {
 								<li className='flex cursor-pointer items-center font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased transition-colors duration-300 hover:text-light-blue-500'>
 									<a href='#'>
 										<p className='block font-sans text-sm font-normal leading-normal text-blue-900 antialiased opacity-50 transition-all hover:text-blue-500 hover:opacity-100'>
-											dashboard
+											home
 										</p>
 									</a>
 									<span className='pointer-events-none mx-2 select-none font-sans text-sm font-normal leading-normal text-gray-500 antialiased'>
@@ -48,6 +54,7 @@ const BasicHeader = () => {
 						<button
 							className='middle none relative grid h-10 max-h-[40px] w-10 max-w-[40px] rounded-lg text-center font-sans text-xs font-medium uppercase text-gray-500 transition-all hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none xl:hidden'
 							type='button'
+							onClick={onOffMenu}
 						>
 							<span className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'>
 								<svg

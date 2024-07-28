@@ -17,8 +17,9 @@ const BasicLayout = (props: PropsType) => {
 	return (
 		<>
 			{/*<BasicHeader></BasicHeader>*/}
-			<LeftSidebar></LeftSidebar>
 			{/*<RightSidebar></RightSidebar>*/}
+			<LeftSidebar></LeftSidebar>
+
 			<motion.div
 				className='overflow-hidden p-4 text-black dark:text-white xl:ml-80'
 				initial={basicAnim.initial}

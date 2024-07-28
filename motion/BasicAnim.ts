@@ -99,7 +99,7 @@ export const basicConfirmAnim = {
 
 export const basicLeftSidebarAnim = {
 	initial: {
-		x: '-100%',
+		x: '-120%',
 		opacity: 0.5,
 		transition: {
 			type: 'spring',
@@ -115,7 +115,7 @@ export const basicLeftSidebarAnim = {
 		},
 	},
 	exit: {
-		x: '-100%',
+		x: '-120%',
 		opacity: 0.5,
 		transition: {
 			type: 'spring',

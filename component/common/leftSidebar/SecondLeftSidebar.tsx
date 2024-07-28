@@ -1,10 +1,12 @@
 'use client'
 
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { goHomeRoute, goJoinRoute, goLoginRoute } from '@link/index'
+import { menuActions } from '@redux/reducers/menu'
+import { RootState } from '@redux/store'
 
-const BasicLeftSidebar = () => {
+const SecondLeftSidebar = () => {
 	const dispatch = useDispatch()
 
 	const homeRoute = goHomeRoute()
@@ -21,18 +23,22 @@ const BasicLeftSidebar = () => {
 		joinRoute({ type: 'push' })
 	}
 
+	const onOffMenu = () => {
+		dispatch(menuActions.toggleIsMenu())
+	}
+
 	return (
 		<>
-			<aside className='fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-64px)] w-72 -translate-x-80 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 transition-transform duration-300 xl:translate-x-0'>
 				<div className='relative border-b border-white/20'>
 					<a className='flex items-center gap-4 px-8 py-6' href='#/'>
 						<h6 className='block font-sans text-base font-semibold leading-relaxed tracking-normal text-white antialiased'>
-							Material Tailwind Dashboard
+							메뉴
 						</h6>
 					</a>
 					<button
 						className='middle none absolute right-0 top-0 grid h-8 max-h-[32px] w-8 max-w-[32px] rounded-lg rounded-br-none rounded-tl-none text-center font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none xl:hidden'
 						type='button'
+						onClick={onOffMenu}
 					>
 						<span className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'>
 							<svg
@@ -68,7 +74,7 @@ const BasicLeftSidebar = () => {
 										<path d='M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z'></path>
 									</svg>
 									<p className='block font-sans text-base font-medium capitalize leading-relaxed text-inherit antialiased'>
-										dashboard
+										홈
 									</p>
 								</button>
 							</a>
@@ -203,9 +209,8 @@ const BasicLeftSidebar = () => {
 						</li>
 					</ul>
 				</div>
-			</aside>
 		</>
 	)
 }
 
-export default BasicLeftSidebar
+export default SecondLeftSidebar
