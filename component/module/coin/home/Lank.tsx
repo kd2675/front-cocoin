@@ -1,6 +1,6 @@
 'use client'
 
-import LankPiece from '@component/module/coin/LankPiece'
+import LankPiece from '@component/module/coin/home/LankPiece'
 
 type PropsType = {}
 

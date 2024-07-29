@@ -1,7 +1,7 @@
 'use client'
 
-import Lank from '@component/module/coin/Lank'
-import Project from '@component/module/coin/Project'
+import Lank from '@component/module/coin/home/Lank'
+import Project from '@component/module/coin/home/Project'
 
 type PropsType = {
 

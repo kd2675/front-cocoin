@@ -1,5 +1,5 @@
-import Lank from '@component/module/coin/Lank'
-import Coin from '@component/module/coin'
+import Lank from '@component/module/coin/home/Lank'
+import Coin from '@component/module/coin/home'
 
 type PropsType = {}
 

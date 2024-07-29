@@ -34,10 +34,34 @@ export const goJoinRoute = () => {
 	return goPage
 }
 
-export const goCoinRouter = () => {
+export const goCoinHomeRouter = () => {
 	const router = useRouter()
 	const goPage = ({ type }: { type: LinkType }) => {
-		router[type]('/coin', {})
+		router[type]('/coin/home', {})
+	}
+	return goPage
+}
+
+export const goCoinProfileRouter = () => {
+	const router = useRouter()
+	const goPage = ({ type }: { type: LinkType }) => {
+		router[type]('/coin/profile', {})
+	}
+	return goPage
+}
+
+export const goCoinCoinRouter = () => {
+	const router = useRouter()
+	const goPage = ({ type }: { type: LinkType }) => {
+		router[type]('/coin/coin', {})
+	}
+	return goPage
+}
+
+export const goCoinGameRouter = () => {
+	const router = useRouter()
+	const goPage = ({ type }: { type: LinkType }) => {
+		router[type]('/coin/game', {})
 	}
 	return goPage
 }

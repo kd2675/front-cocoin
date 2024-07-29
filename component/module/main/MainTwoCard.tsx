@@ -1,16 +1,18 @@
 'use client'
 
 import React from 'react'
-import { goCoinRouter, goHealthRoute } from '@/link'
+import { goCoinHomeRouter, goHealthRoute } from '@/link'
 import { useDispatch } from 'react-redux'
 import { modalActions } from 'redux/reducers/modal'
+import { menuActions } from '@redux/reducers/menu'
 
 const MainTwoCard = () => {
 	const dispatch = useDispatch()
-	const coinRouter = goCoinRouter()
+	const coinRouter = goCoinHomeRouter()
 	const healthRoute = goHealthRoute()
 
 	const goCoin = () => {
+		dispatch(menuActions.setMenuNum(1))
 		coinRouter({ type: 'push' })
 	}
 
@@ -20,7 +22,7 @@ const MainTwoCard = () => {
 
 	const ready = () => {
 		dispatch(
-			modalActions.addToast({
+			modalActions.addAlert({
 				msg: '준비중입니다.',
 			})
 		)
