@@ -1,19 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { HYDRATE } from 'next-redux-wrapper'
 
 export type MenuTabType = {
 	id: number
 	title: string
-	sub: {id: number, subTitle:string, subContent:string}[]
+	sub: { id: number; subTitle: string; subContent: string }[]
 }
 
 export type MenuReducerType = {
 	isMenu: boolean
+	isProfile: boolean
+	isSetting: boolean
+	isAlarm: boolean
 	menuNum: number
 }
 
 const initState: MenuReducerType = {
 	isMenu: false,
+	isProfile: false,
+	isSetting: false,
+	isAlarm: false,
 	menuNum: 1,
 }
 
@@ -34,16 +39,28 @@ const menuReducer = createSlice({
 		setMenuNum: (state, action: PayloadAction<number>) => {
 			state.menuNum = action.payload
 		},
+		toggleIsProfile: (state) => {
+			if (state.isProfile) {
+				state.isProfile = false
+			} else {
+				state.isProfile = true
+			}
+		},
+		toggleIsSetting: (state) => {
+			if (state.isSetting) {
+				state.isSetting = false
+			} else {
+				state.isSetting = true
+			}
+		},
+		toggleIsAlarm: (state) => {
+			if (state.isAlarm) {
+				state.isAlarm = false
+			} else {
+				state.isAlarm = true
+			}
+		},
 	},
-	// extraReducers: {
-	// 	[HYDRATE]: (state, action) => {
-	// 		console.log('HYDRATE', state, action.payload);
-	// 		return {
-	// 			...state,
-	// 			...action.payload.subject,
-	// 		};
-	// 	},
-	// },
 })
 
 const { actions, reducer: menu } = menuReducer

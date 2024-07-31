@@ -12,7 +12,6 @@ const MainTwoCard = () => {
 	const healthRoute = goHealthRoute()
 
 	const goCoin = () => {
-		dispatch(menuActions.setMenuNum(1))
 		coinRouter({ type: 'push' })
 	}
 

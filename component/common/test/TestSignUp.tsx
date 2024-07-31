@@ -149,9 +149,9 @@ const TestSignUp = () => {
 									className="w-5 h-5"
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 326667 333333"
-									shape-rendering="geometricPrecision"
-									text-rendering="geometricPrecision"
-									image-rendering="optimizeQuality"
+									shapeRendering="geometricPrecision"
+									textRendering="geometricPrecision"
+									imageRendering="optimizeQuality"
 									fillRule="evenodd"
 									clipRule="evenodd"
 								>

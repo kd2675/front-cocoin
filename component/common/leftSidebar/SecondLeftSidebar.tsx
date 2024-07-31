@@ -39,26 +39,23 @@ const SecondLeftSidebar = () => {
 
 	const goCoinHome = () => {
 		coinHomeRouter({ type: 'push' })
-		onOffMenu(1)
+		onOffMenu()
 	}
 	const goCoinProfile = () => {
 		coinProfileRouter({ type: 'push' })
-		onOffMenu(2)
+		onOffMenu()
 	}
 	const goCoinCoin = () => {
 		coinCoinRouter({ type: 'push' })
-		onOffMenu(3)
+		onOffMenu()
 	}
 	const goCoinGame = () => {
 		coinGameRouter({ type: 'push' })
-		onOffMenu(4)
+		onOffMenu()
 	}
 
-	const onOffMenu = (menuNum?: number) => {
+	const onOffMenu = () => {
 		dispatch(menuActions.toggleIsMenu())
-		if (menuNum) {
-			dispatch(menuActions.setMenuNum(menuNum))
-		}
 	}
 
 	return (

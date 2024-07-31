@@ -18,7 +18,6 @@ import BasicLoading from '@component/loading/BasicLoading'
 type Props = {}
 
 const StoreProvider = ({ children }: { children: React.ReactNode }) => {
-	// const storeRef = useRef<AppStore>(makeStore())
 	const [queryClient] = useState(
 		() =>
 			new QueryClient({
@@ -41,16 +40,14 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
 	const router = useRouter()
 	const client = useRef<CompatClient>()
 
-	// if (!storeRef.current) {
-	// 	// Create the store instance the first time this renders
-	// 	storeRef.current = makeStore()
-	//
-	// 	//socket
-	// 	useEffect(() => {
-	// 		connect(client, storeRef.current.dispatch, router, queryClient)
-	// 		return () => disconnect(client)
-	// 	}, [])
-	// }
+	if (!client.current) {
+		// Create the store instance the first time this renders
+		//socket
+		useEffect(() => {
+			connect(client, store.dispatch, router, queryClient)
+			return () => disconnect(client)
+		}, [])
+	}
 
 	return (
 		<QueryClientProvider client={queryClient}>

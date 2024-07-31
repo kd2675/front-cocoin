@@ -7,16 +7,16 @@ import { commonActions } from 'redux/reducers/common'
 import Image from 'next/image'
 import { menuActions } from '@redux/reducers/menu'
 import { RootState } from '@redux/store'
+import { goHomeRoute } from '@/link'
 
 const BasicHeader = () => {
 	const dispatch = useDispatch()
-	// const router = useRouter()
+	const router = useRouter()
 
-	// const goMainPage = goMainRoute()
-	// const headerLogoOnClick = () => {
-	// 	goMainPage({ type: 'push' })
-	// 	router.reload()
-	// }
+	const goMainPage = goHomeRoute()
+	const headerLogoOnClick = () => {
+		goMainPage({ type: 'push' })
+	}
 
 	const onOffMenu = () => {
 		dispatch(menuActions.toggleIsMenu())
@@ -30,11 +30,11 @@ const BasicHeader = () => {
 						<nav aria-label='breadcrumb' className='w-max'>
 							<ol className='flex w-full flex-wrap items-center rounded-md bg-transparent bg-opacity-60 p-0 transition-all'>
 								<li className='flex cursor-pointer items-center font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased transition-colors duration-300 hover:text-light-blue-500'>
-									<a href='#'>
+									<div onClick={headerLogoOnClick}>
 										<p className='block font-sans text-sm font-normal leading-normal text-blue-900 antialiased opacity-50 transition-all hover:text-blue-500 hover:opacity-100'>
 											home
 										</p>
-									</a>
+									</div>
 									<span className='pointer-events-none mx-2 select-none font-sans text-sm font-normal leading-normal text-gray-500 antialiased'>
 										/
 									</span>

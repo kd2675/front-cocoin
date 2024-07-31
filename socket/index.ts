@@ -9,8 +9,11 @@ import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.share
 
 
 export const connect = (client: MutableRefObject<CompatClient | undefined>, dispatch: Dispatch<AnyAction>, router: AppRouterInstance, queryClient: QueryClient) => {
-	const sockJS = new SockJS(`${process.env.NEXT_PUBLIC_SOCKET_SERVER_URL}`)
-	client.current = Stomp.over(sockJS)
+	// const sockJS = new SockJS(`${process.env.NEXT_PUBLIC_SOCKET_SERVER_URL}`)
+	// new WebSocket(`ws://${process.env.NEXT_PUBLIC_SOCKET_SERVER_URL}`)
+	client.current = Stomp.over(function(){
+		return new SockJS(`${process.env.NEXT_PUBLIC_SOCKET_SERVER_URL}`)
+	})
 	client.current?.connect(
 		{},
 		() => {
@@ -22,6 +25,7 @@ export const connect = (client: MutableRefObject<CompatClient | undefined>, disp
 	)
 }
 export const onConnected = (client: MutableRefObject<CompatClient | undefined>, dispatch: Dispatch<AnyAction>, router: AppRouterInstance, queryClient: QueryClient) => {
+	console.log("socket init")
 	subscribers(client, dispatch, router, queryClient)
 	publishers(client, dispatch, router, queryClient)
 }
@@ -48,9 +52,10 @@ export const send = (client: MutableRefObject<CompatClient | undefined>, destina
 }
 
 export const onError = (client: MutableRefObject<CompatClient | undefined>) => {
-	console.log('error')
+	console.log('socket error')
 }
 export const disconnect = (client: MutableRefObject<CompatClient | undefined>) => {
 	// 연결이 끊겼을 때
+	console.log('socket disconnect')
 	client.current?.deactivate()
 }

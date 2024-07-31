@@ -1,8 +1,17 @@
 'use client'
 
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { menuActions } from '@redux/reducers/menu'
+
 type PropsType = {}
 
 const Index = (props: PropsType) => {
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(menuActions.setMenuNum(4))
+	}, [])
 	return (
 		<>
 			<section className='p-4'>
