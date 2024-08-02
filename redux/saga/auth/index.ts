@@ -6,7 +6,7 @@ import {authActions} from '@redux/reducers/auth'
 import { modalActions } from 'redux/reducers/modal'
 import { NextRouter } from 'next/router'
 import { useSelector } from 'react-redux'
-import { TokenType } from '@api/service/auth/AuthService'
+import { TokenType } from '@api/service/auth/authAxios'
 
 function* signUpSaga(action: PayloadAction<InsSignUpParamType>) {
 	const router: NextRouter = yield getContext('router')

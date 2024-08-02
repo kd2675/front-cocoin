@@ -1,4 +1,4 @@
-import HealthService from '@api/service/health/HealthService'
+import HealthService from '@api/service/health/healthAxios'
 
 const queryKeys = {
 	health: ['health'] as const

@@ -11,7 +11,7 @@ const LoginPwdInput = (props: PropsType) => {
 	return (
 		<>
 			<div className="mb-6">
-				<BasicInput id={'userPwd'} type={'password'} autoComplete={'off'} register={props.register} labelName={'비밀번호'} placeholder={'********'}></BasicInput>
+				<BasicInput id={'userPassword'} type={'password'} autoComplete={'off'} register={props.register} labelName={'비밀번호'} placeholder={'********'}></BasicInput>
 			</div>
 		</>
 	)

@@ -1,6 +1,6 @@
 import axiosLib from 'axios'
 import { tokenRefreshV1 } from 'api/deprecated/auth'
-import { TokenType } from '@api/service/auth/AuthService'
+import { TokenType } from '@api/service/auth/authAxios'
 
 export type BaseResponseType<t> = {
 	code: number
@@ -33,7 +33,7 @@ export type BasePageableType<t> = {
 export const axios = axiosLib.create({
 	baseURL: `${process.env.NEXT_PUBLIC_API_SERVER_URL}`, // typeof location !== "undefined"
 	headers: {
-		'Auth-header': 'cocoin'
+		'Auth-header': 'second'
 		// 'Authorization': useSelector((state: RootState) => state.auth.accessToken)
 	},
 	// ? ( location?.origin.indexOf("yeoboya.com") > -1 ? location?.origin : process.env.API_SERVER_URL )
@@ -42,7 +42,7 @@ export const axios = axiosLib.create({
 	withCredentials: true,
 })
 
-export const axiosAuth = axiosLib.create({
+export const axiosMember = axiosLib.create({
 	baseURL: `${process.env.NEXT_PUBLIC_AUTH_SERVER_URL}`, // typeof location !== "undefined"
 	// headers: {
 	// 	'Authorization': useSelector((state: RootState) => state.auth.accessToken)

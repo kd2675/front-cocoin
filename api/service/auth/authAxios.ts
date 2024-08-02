@@ -2,7 +2,7 @@ import Service from '@api/service/Service'
 import { axios, BaseResponseType } from '@/api'
 import { LoginRegisterSchemaType } from '@schema/login'
 
-class AuthService extends Service {
+class AuthAxios extends Service {
 	async login(data: LoginParamType) {
 		// return this.http.post<BaseResponseType<TokenType>>('/api/auth/ctf/login', data)
 		return await axios.post<BaseResponseType<TokenType>>('/api/auth/ctf/login', data)
@@ -12,8 +12,9 @@ class AuthService extends Service {
 export type LoginParamType = LoginRegisterSchemaType
 
 export type TokenType = {
+	grantType: string
 	accessToken: string
 	refreshToken: string
 }
 
-export default new AuthService()
+export default new AuthAxios()

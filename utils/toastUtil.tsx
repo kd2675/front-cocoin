@@ -27,7 +27,8 @@ const ToastUtil = () => {
 					animate={basicToastAnim.animate}
 					exit={basicToastAnim.exit}
 				>
-					{modal.toast.length > 0 && modal.toast[0]?.type == null && (
+					{modal.toast.length > 0 && (
+						// && modal.toast[0]?.type == null
 						<BasicToast
 							uuid={modal.toast[0].uuid}
 							msg={modal.toast[0].msg}

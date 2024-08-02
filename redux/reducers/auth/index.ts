@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {MenuTabType} from "@redux/reducers/menu";
 import { UserInfoType } from 'api/deprecated/auth'
-import { TokenType } from '@api/service/auth/AuthService'
+import { TokenType } from '@api/service/auth/authAxios'
 
 export type AuthReducerType = {
     userInfo: UserInfoType | null

@@ -1,4 +1,4 @@
-import AuthService, { LoginParamType, TokenType } from '@api/service/auth/AuthService'
+import AuthService, { LoginParamType, TokenType } from '@api/service/auth/authAxios'
 import { MutationParam } from '@api/service/Service'
 import type { DefaultError } from '@tanstack/query-core'
 import { BaseResponseType } from '@/api'

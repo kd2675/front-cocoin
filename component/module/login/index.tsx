@@ -26,7 +26,7 @@ const Index = () => {
 	})
 
 	const emailRegister = methods.register('userEmail')
-	const pwdRegister = methods.register('userPwd')
+	const pwdRegister = methods.register('userPassword')
 
 	const submitHandler: SubmitHandler<LoginRegisterSchemaType> = async (data) => {
 		console.log('data : ', data)
@@ -66,6 +66,12 @@ const Index = () => {
 								<LoginEmailInput register={emailRegister}></LoginEmailInput>
 								<LoginPwdInput register={pwdRegister}></LoginPwdInput>
 								<div className='flex items-center justify-between'>
+									<a
+										className='inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800'
+										href='#'
+									>
+										Forgot Password?
+									</a>
 									<button
 										className='focus:shadow-outline rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none'
 										type='button'
@@ -75,12 +81,6 @@ const Index = () => {
 									>
 										로그인
 									</button>
-									<a
-										className='inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800'
-										href='#'
-									>
-										Forgot Password?
-									</a>
 								</div>
 							</div>
 						</FormProvider>

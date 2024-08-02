@@ -1,7 +1,7 @@
 import {axios} from '@/api'
 import { LoginRegisterSchemaType } from '@schema/login'
 import {SignUpRegisterSchemaType} from "@schema/signUp";
-import { TokenType } from '@api/service/auth/AuthService'
+import { TokenType } from '@api/service/auth/authAxios'
 
 
 export const loginV1 = async (data: LoginParamType) => {

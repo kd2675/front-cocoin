@@ -1,4 +1,4 @@
-import queryOptions from '@api/service/health/queries'
+import queryOptions from '@api/service/health/healthOption'
 import { getDehydratedQuery, Hydrate } from '@query/reactQuery'
 import Health from '@component/module/health/Health'
 import * as React from 'react'
