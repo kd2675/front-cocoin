@@ -21,7 +21,7 @@ const MainTwoCard = () => {
 
 	const ready = () => {
 		dispatch(
-			modalActions.addAlert({
+			modalActions.addConfirm({
 				msg: '준비중입니다.',
 			})
 		)
