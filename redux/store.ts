@@ -29,7 +29,7 @@ const persistConfig = {
 	// storage: storage, // localStorage를 사용할 경우
 	storage: createWebStorage, // sessionStorage를 사용할 경우
 	// whitelist: ["auth"],
-	blacklist: ['modal']
+	// blacklist: ['modal']
 };
 
 // ### 루트 리듀서 생성

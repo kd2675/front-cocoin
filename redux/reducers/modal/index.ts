@@ -35,16 +35,28 @@ export type ConfirmType = {
 	closeCallback?: ()=>void;
 }
 
+export type NotiType = {
+	uuid?: string;
+	title: ReactNode | string;
+	msg: ReactNode | string;
+	type?: null | 'info' | 'danger' | 'suc' | 'warn';
+	btnFunc?: ()=>void;
+	openCallback?: ()=>void;
+	closeCallback?: ()=>void;
+}
+
 export type ModalReducerType = {
 	alert: AlertType[],
 	toast: ToastType[],
 	confirm: ConfirmType[]
+	noti: NotiType[]
 }
 
 const initState: ModalReducerType = {
 	alert: [],
 	toast: [],
-	confirm: []
+	confirm: [],
+	noti: []
 }
 
 // slice 생성
@@ -86,6 +98,20 @@ const modalReducer = createSlice({
 		},
 		deleteConfirm: (state) => {
 			state.confirm = [...state.confirm.slice(1, state.confirm.length)]
+			return state
+		},
+		addNoti: (state, action: PayloadAction<NotiType>) => {
+			action.payload.uuid = v4()
+			state.noti = [{ ...action.payload }, ...state.noti]
+			return state
+		},
+		deleteNoti: (state, action: PayloadAction<string>) => {
+			state.noti = state.noti.filter((v)=>v.uuid != action.payload)
+			// state.noti = [...state.noti.slice(1, state.noti.length)]
+			return state
+		},
+		deleteAllNoti: (state) => {
+			state.noti = []
 			return state
 		},
 	}

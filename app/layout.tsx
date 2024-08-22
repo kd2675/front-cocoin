@@ -16,6 +16,7 @@ import { RootState } from '@redux/store'
 import ToastUtil from '@utils/toastUtil'
 import ConfirmUtil from '@utils/confirmUtil'
 import React from 'react'
+import NotiUtil from '@utils/notiUtil'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -34,6 +35,7 @@ export default function RootLayout({
 			<body className={inter.className + ' h-full'}>
 				<StoreProvider>
 					{children}
+					<NotiUtil />
 					<ConfirmUtil />
 					<ToastUtil />
 					<AlertUtil />

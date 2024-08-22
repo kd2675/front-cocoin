@@ -97,6 +97,33 @@ export const basicConfirmAnim = {
 	},
 }
 
+export const basicNotiAnim = {
+	initial: {
+		x: '100%',
+		opacity: 0.5,
+		transition: {
+			type: 'spring',
+			damping: 20,
+		},
+	},
+	animate: {
+		x: '0%',
+		opacity: 1,
+		transition: {
+			type: 'spring',
+			damping: 20,
+		},
+	},
+	exit: {
+		x: '100%',
+		opacity: 0,
+		transition: {
+			type: 'spring',
+			damping: 20,
+		},
+	},
+}
+
 export const basicLeftSidebarAnim = {
 	initial: {
 		x: '-120%',

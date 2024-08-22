@@ -13,7 +13,7 @@ export const logoutV1 = async () => {
 }
 
 export const tokenRefreshV1 =  async () => {
-	return await axios.post<TokenType>('/api/auth/reIssue')
+	return await axios.post<TokenType>('/api/auth/ctf/refresh')
 }
 
 export const userInfo = async ()=>{

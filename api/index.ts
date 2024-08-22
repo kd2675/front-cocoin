@@ -64,50 +64,50 @@ export const axiosFile = axiosLib.create({
 	// withCredentials: true,
 })
 
-axios.interceptors.request.use(
-	(config) => {
-		return config
-	},
-	(error) => {
-		return Promise.reject(error)
-	}
-)
+// axios.interceptors.request.use(
+// 	(config) => {
+// 		return config
+// 	},
+// 	(error) => {
+// 		return Promise.reject(error)
+// 	}
+// )
 
-axios.interceptors.response.use(
-	(response) => {
-		return response
-	},
-	async (error) => {
-		if (error.response && error.response.status === 800) {
-			location.replace('/')
-		}
-
-		if (error.response && error.response.status === 404) {
-			location.href = '/404'
-		}
-
-		if (error.response && error.response.status === 401) {
-			console.log('401error')
-
-			try {
-				const originalRequest = error.config
-				const { data }: { data: TokenType } = await tokenRefreshV1()
-				if (data.accessToken == null) {
-					// location.href = '/login'
-					return Promise.reject(error)
-				}
-				await setAuthorizationToken(data.accessToken)
-				originalRequest.headers.Authorization = `Bearer ${data.accessToken}`
-				return await axios.request(originalRequest)
-			} catch (error) {
-				console.log('401error error : ', error)
-				return Promise.reject(error)
-			}
-		}
-		// 로그처리나 필요한게 있다면? 추가??
-		return Promise.reject(error)
-	},
-)
+// axios.interceptors.response.use(
+// 	(response) => {
+// 		return response
+// 	},
+// 	async (error) => {
+// 		if (error.response && error.response.status === 800) {
+// 			location.replace('/')
+// 		}
+//
+// 		if (error.response && error.response.status === 404) {
+// 			location.href = '/404'
+// 		}
+//
+// 		if (error.response && error.response.status === 401) {
+// 			console.log('401error')
+//
+// 			try {
+// 				const originalRequest = error.config
+// 				const { data }: { data: TokenType } = await tokenRefreshV1()
+// 				if (data.accessToken == null) {
+// 					// location.href = '/login'
+// 					return Promise.reject(error)
+// 				}
+// 				await setAuthorizationToken(data.accessToken)
+// 				originalRequest.headers.Authorization = `Bearer ${data.accessToken}`
+// 				return await axios.request(originalRequest)
+// 			} catch (error) {
+// 				console.log('401error error : ', error)
+// 				return Promise.reject(error)
+// 			}
+// 		}
+// 		// 로그처리나 필요한게 있다면? 추가??
+// 		return Promise.reject(error)
+// 	},
+// )
 
 export const setAuthorizationToken = async (token: string) => {
 	console.log('setAuthorizationToken')

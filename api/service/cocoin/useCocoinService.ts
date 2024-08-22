@@ -1,9 +1,10 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useDispatch } from 'react-redux'
 import { modalActions } from '@redux/reducers/modal'
-import mutationOptions from '@api/service/cocoin/cocoinOption'
+import mutationOptions from '@api/service/cocoin/cocoinOptionMutation'
+import queryOptions from '@api/service/cocoin/cocoinOptionQuery'
 
-export const useLogin = () => {
+export const useOrder = () => {
 	const dispatch = useDispatch()
 	const queryClient = useQueryClient()
 
@@ -18,4 +19,12 @@ export const useLogin = () => {
 		}),
 		queryClient
 	)
+}
+
+export const useGetCandles = () => {
+	return useQuery(queryOptions.getCandles())
+}
+
+export const useGetBid = () => {
+	return useQuery(queryOptions.getBid())
 }
