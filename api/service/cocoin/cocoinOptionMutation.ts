@@ -1,6 +1,6 @@
 import { MutationParam } from '@api/service/Service'
 import type { DefaultError } from '@tanstack/query-core'
-import { BaseResponseType } from '@/api'
+import { BaseDataResponseType } from '@/api'
 import cocoinAxios, { OrderParamType, OrderType } from '@api/service/cocoin/cocoinAxios'
 
 const mutationKeys = {
@@ -14,7 +14,7 @@ const mutationOptions = {
 			const res = await cocoinAxios.order(data)
 			return res.data
 		},
-		onSuccess: async (data: BaseResponseType<OrderType>, variables: OrderParamType, context: unknown) => {
+		onSuccess: async (data: BaseDataResponseType<OrderType>, variables: OrderParamType, context: unknown) => {
 			props?.onSuccess?.(data)
 		},
 		onError: (error: DefaultError, variables: OrderParamType, context: unknown) => {

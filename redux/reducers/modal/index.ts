@@ -25,8 +25,9 @@ export type ToastType = {
 
 export type ConfirmType = {
 	uuid?: string;
-	msg: ReactNode | string;
-	type?: null | 'info' | 'danger' | 'suc' | 'warn';
+	title: ReactNode | string;
+	msg: ReactNode;
+	type?: null | 'suc' | 'warn' | 'danger';
 	btn1Text?: string;
 	btn1Func?: ()=>void;
 	btn2Text?: string;

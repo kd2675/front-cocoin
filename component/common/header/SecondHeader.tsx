@@ -30,7 +30,7 @@ const BasicHeader = () => {
 		dispatch(modalActions.addToast({ msg: 'test' }))
 	}
 	const confirmTest = () => {
-		dispatch(modalActions.addConfirm({ msg: 'test' }))
+		dispatch(modalActions.addConfirm({ msg: 'test', title: 'test' }))
 	}
 	const notiTest = () => {
 		dispatch(modalActions.addNoti({ title: 'tes123123123t', msg: 'test' }))

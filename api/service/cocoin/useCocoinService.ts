@@ -14,11 +14,15 @@ export const useOrder = () => {
 				dispatch(modalActions.addAlert({ msg: '성공입니다.', type: 'suc' }))
 			},
 			onError: (error) => {
-				dispatch(modalActions.addAlert({ msg: '이메일 및 비밀번호를 확인해주세요.', type: 'danger' }))
+				dispatch(modalActions.addAlert({ msg: '주문을 다시 확인해주세요.' + error.message, type: 'danger' }))
 			},
 		}),
 		queryClient
 	)
+}
+
+export const useGetTicker = () => {
+	return useQuery(queryOptions.getTicker())
 }
 
 export const useGetCandles = () => {

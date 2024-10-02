@@ -3,7 +3,7 @@ import { AxiosRequestConfig, AxiosResponse } from 'axios'
 import type { DefaultError } from '@tanstack/query-core'
 
 export type MutationParam = {
-	onSuccess: (data:unknown) => void
+	onSuccess: (data?:any) => void
 	onError: (error:DefaultError) => void
 }
 

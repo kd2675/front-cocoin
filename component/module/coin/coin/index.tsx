@@ -16,6 +16,7 @@ const Index = (props: PropsType) => {
 	useEffect(() => {
 		dispatch(menuActions.setMenuNum(3))
 	}, [])
+
 	return (
 		<>
 			<div>

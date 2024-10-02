@@ -21,7 +21,7 @@ export const OrderRegisterSchema = yup.object({
 	cnt: yup
 		.number()
 		.required("개수를 확인해주세요")
-		.min(1, '개수는 최소 1개 입니다.'),
+		.min(0.001, '개수는 최소 0.001개 입니다.'),
 	price: yup
 		.number()
 		.required("가격을 확인해주세요")

@@ -2,7 +2,13 @@ import axiosLib from 'axios'
 import { tokenRefreshV1 } from 'api/deprecated/auth'
 import { TokenType } from '@api/service/auth/authAxios'
 
-export type BaseResponseType<t> = {
+export type BaseResponseType = {
+	code: number
+	message: string
+	success: boolean
+}
+
+export type BaseDataResponseType<t> = {
 	code: number
 	data: t
 	message: string

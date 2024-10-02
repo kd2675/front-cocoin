@@ -66,11 +66,11 @@ export const store = configureStore({
 		...getDefaultMiddleware({
 			serializableCheck: {
 				// Ignore these action types
-				ignoredActions: ['modal/addConfirm', 'modal/addToast', 'persist/PERSIST'],
+				ignoredActions: ['modal/addConfirm', 'modal/addToast', 'modal/addAlert', 'persist/PERSIST'],
 				// Ignore these field paths in all actions
 				ignoredActionPaths: ['payload.btn1Fuc', 'payload.btn2Fuc', 'payload.btnFuc', 'payload.openCallback', 'payload.closeCallback'],
 				// Ignore these paths in the state
-				ignoredPaths: ['modal.confirm', 'modal.toast'],
+				ignoredPaths: ['modal.confirm', 'modal.toast', 'modal.alert'],
 			},
 		}),
 		sagaMiddleware,

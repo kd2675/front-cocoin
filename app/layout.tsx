@@ -17,6 +17,9 @@ import ToastUtil from '@utils/toastUtil'
 import ConfirmUtil from '@utils/confirmUtil'
 import React from 'react'
 import NotiUtil from '@utils/notiUtil'
+import { ModalReducerType } from '@redux/reducers/modal'
+import { axios } from '@/api'
+import LoginUtil from '@utils/loginUtil'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -34,6 +37,7 @@ export default function RootLayout({
 		<html className='h-full bg-white' lang='kr'>
 			<body className={inter.className + ' h-full'}>
 				<StoreProvider>
+					<LoginUtil />
 					{children}
 					<NotiUtil />
 					<ConfirmUtil />

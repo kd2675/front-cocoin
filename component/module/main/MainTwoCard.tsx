@@ -23,6 +23,7 @@ const MainTwoCard = () => {
 		dispatch(
 			modalActions.addConfirm({
 				msg: '준비중입니다.',
+				title: 'test'
 			})
 		)
 	}

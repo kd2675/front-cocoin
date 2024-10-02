@@ -21,7 +21,7 @@ const OrderBoxBid = (props: PropsType) => {
 				})}
 				{candles.data && candles.data.data.orderbookUnits.reverse().map((v, i, a)=>{
 					if (i % 3 == 0){
-						return <OrderBoxBidDownBtn orderBook={v}></OrderBoxBidDownBtn>
+						return <OrderBoxBidDownBtn orderBook={v} setOrderPrice={props.setOrderPrice}></OrderBoxBidDownBtn>
 					}
 				})}
 			</div>

@@ -42,7 +42,8 @@ export async function getDehydratedQuery<Q extends QueryProps>({
 	const { queries } = dehydrate(queryClient)
 	const [dehydratedQuery] = queries.filter((query) => isEqual(query.queryKey, queryKey))
 	if(!dehydratedQuery) {
-		throw new Error('not dehydrated error - server connect error')
+		return null;
+		// throw new Error('not dehydrated error - server connect error')
 	}
 	return dehydratedQuery as DehydratedQueryExtended<UnwrapPromise<ReturnType<Q['queryFn']>>>
 }

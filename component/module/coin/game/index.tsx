@@ -3,15 +3,22 @@
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { menuActions } from '@redux/reducers/menu'
+import { useRouter } from 'next/navigation'
+import { goBasicRouter } from '@/link'
 
 type PropsType = {}
 
 const Index = (props: PropsType) => {
 	const dispatch = useDispatch()
-
+	const router = useRouter()
+	const basicRouter = goBasicRouter()
 	useEffect(() => {
 		dispatch(menuActions.setMenuNum(4))
 	}, [])
+	const basicOnClick = () => {
+		basicRouter({ type: 'push' })
+	}
+
 	return (
 		<>
 			<section className='p-4'>
@@ -77,6 +84,7 @@ const Index = (props: PropsType) => {
 								<button
 									className='flex w-full select-none items-center justify-center gap-4 rounded-lg bg-gray-900 px-6 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
 									type='button'
+									onClick={basicOnClick}
 								>
 									join{' '}
 									<svg

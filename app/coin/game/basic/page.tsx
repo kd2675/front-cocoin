@@ -1,4 +1,4 @@
-import Game from '@component/module/coin/game'
+import Basic from '@component/module/coin/game/basic'
 
 type PropsType = {
 
@@ -7,7 +7,7 @@ type PropsType = {
 const Page = async (props: PropsType) => {
 	return (
 		<>
-			<Game></Game>
+			<Basic></Basic>
 		</>
 	)
 }

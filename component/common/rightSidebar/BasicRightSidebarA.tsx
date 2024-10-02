@@ -1,5 +1,5 @@
 import React from 'react'
-import { UserInfoType } from 'api/deprecated/auth'
+import { UserInfoType } from '@api/service/auth/authAxios'
 
 type PropsType = UserInfoType
 const BasicRightSidebarA = (props: PropsType) => {
@@ -17,15 +17,15 @@ const BasicRightSidebarA = (props: PropsType) => {
 						<ul className='mt-2 text-gray-700'>
 							<li className='flex border-y py-2'>
 								<span className='w-24 font-bold'>NickName:</span>
-								<span className='text-gray-700'>{props.userNick}</span>
+								<span className='text-gray-700'>{props.name}</span>
 							</li>
 							<li className='flex border-b py-2'>
 								<span className='w-24 font-bold'>Email:</span>
-								<span className='text-gray-700'>{props.userEmail}</span>
+								<span className='text-gray-700'>{props.email}</span>
 							</li>
 							<li className='flex border-b py-2'>
 								<span className='w-24 font-bold'>Point:</span>
-								<span className='text-gray-700'>{props.userWalletEntityPoint}</span>
+								<span className='text-gray-700'>{props.walletDTO.point}</span>
 							</li>
 						</ul>
 						{/*<BasicShowMoreBtn showMoreOnClick={showMoreOnClick}></BasicShowMoreBtn>*/}

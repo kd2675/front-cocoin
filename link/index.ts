@@ -65,3 +65,11 @@ export const goCoinGameRouter = () => {
 	}
 	return goPage
 }
+
+export const goBasicRouter = () => {
+	const router = useRouter()
+	const goPage = ({ type }: {type: LinkType }) => {
+		router[type]('/coin/game/basic', {})
+	}
+	return goPage
+}

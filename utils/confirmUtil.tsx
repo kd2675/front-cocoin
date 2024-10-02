@@ -7,6 +7,9 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { basicConfirmAnim } from '@motion/BasicAnim'
 import BasicConfirm from '@component/common/modal/confirm/BasicConfirm'
 import React from 'react'
+import ConfirmSuc from '@component/common/modal/confirm/ConfirmSuc'
+import ConfirmWarm from '@component/common/modal/confirm/ConfirmWarm'
+import ConfirmDanger from '@component/common/modal/confirm/ConfirmDanger'
 
 const ConfirmUtil = () => {
 	const dispatch = useDispatch()
@@ -31,12 +34,57 @@ const ConfirmUtil = () => {
 						<BasicConfirm
 							uuid={modal.confirm[0].uuid}
 							msg={modal.confirm[0].msg}
+							title={modal.confirm[0].title}
 							closeFunc={closeFunc}
 							openCallback={modal.confirm[0].openCallback}
 							closeCallback={modal.confirm[0].closeCallback}
 							btn1Func={modal.confirm[0].btn1Func}
+							btn1Text={modal.confirm[0].btn1Text}
 							btn2Func={modal.confirm[0].btn2Func}
+							btn2Text={modal.confirm[0].btn2Text}
 						></BasicConfirm>
+					)}
+					{modal.confirm.length > 0 && modal.toast.length === 0 && modal.confirm[0]?.type == 'suc' && (
+						<ConfirmSuc
+							uuid={modal.confirm[0].uuid}
+							msg={modal.confirm[0].msg}
+							title={modal.confirm[0].title}
+							closeFunc={closeFunc}
+							openCallback={modal.confirm[0].openCallback}
+							closeCallback={modal.confirm[0].closeCallback}
+							btn1Func={modal.confirm[0].btn1Func}
+							btn1Text={modal.confirm[0].btn1Text}
+							btn2Func={modal.confirm[0].btn2Func}
+							btn2Text={modal.confirm[0].btn2Text}
+						></ConfirmSuc>
+					)}
+					{modal.confirm.length > 0 && modal.toast.length === 0 && modal.confirm[0]?.type == 'warn' && (
+						<ConfirmWarm
+							uuid={modal.confirm[0].uuid}
+							msg={modal.confirm[0].msg}
+							title={modal.confirm[0].title}
+							closeFunc={closeFunc}
+							openCallback={modal.confirm[0].openCallback}
+							closeCallback={modal.confirm[0].closeCallback}
+							btn1Func={modal.confirm[0].btn1Func}
+							btn1Text={modal.confirm[0].btn1Text}
+							btn2Func={modal.confirm[0].btn2Func}
+							btn2Text={modal.confirm[0].btn2Text}
+						></ConfirmWarm>
+					)}
+					{modal.confirm.length > 0 && modal.toast.length === 0 && modal.confirm[0]?.type == 'danger' && (
+						<ConfirmDanger
+							uuid={modal.confirm[0].uuid}
+							msg={modal.confirm[0].msg}
+							title={modal.confirm[0].title}
+							closeFunc={closeFunc}
+							openCallback={modal.confirm[0].openCallback}
+							closeCallback={modal.confirm[0].closeCallback}
+							btn1Func={modal.confirm[0].btn1Func}
+							btn1Text={modal.confirm[0].btn1Text}
+							btn2Func={modal.confirm[0].btn2Func}
+							btn2Text={modal.confirm[0].btn2Text}
+						></ConfirmDanger>
 					)}
 				</motion.div>
 			</AnimatePresence>
