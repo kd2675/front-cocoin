@@ -7,7 +7,7 @@ type PropsType = {
 const BasicInputErrorP = (props: PropsType) => {
 	return (
 		<>
-			<p className="text-red-500 text-xs italic">Please check your {props.type}.</p>
+			<p className="text-red-500 text-xs italic pt-1">Please check your {props.type}.</p>
 		</>
 	)
 }

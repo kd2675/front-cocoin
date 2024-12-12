@@ -1,7 +1,8 @@
 import { MutationParam } from '@api/service/Service'
 import type { DefaultError } from '@tanstack/query-core'
 import { BaseDataResponseType } from '@/api'
-import cocoinAxios, { OrderParamType, OrderType } from '@api/service/cocoin/cocoinAxios'
+import cocoinAxios from '@api/service/cocoin/act/cocoinAxios'
+import { OrderParamType, OrderType } from '@api/service/cocoin/vo/cocoinType'
 
 const mutationKeys = {
 	order: ['order'] as const,

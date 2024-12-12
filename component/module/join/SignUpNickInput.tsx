@@ -2,7 +2,6 @@ import React from 'react'
 import { useFormContext, UseFormRegisterReturn } from 'react-hook-form'
 import BasicInput from '@component/common/input/BasicInput'
 import { SignUpRegisterSchemaType } from '@schema/signUp'
-import { selSignUpNickCheck } from 'api/deprecated/auth'
 import { useDispatch, useSelector } from 'react-redux'
 
 type PropsType = {

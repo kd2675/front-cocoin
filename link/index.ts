@@ -66,10 +66,18 @@ export const goCoinGameRouter = () => {
 	return goPage
 }
 
-export const goBasicRouter = () => {
+export const goGameBasicBuyRouter = () => {
 	const router = useRouter()
 	const goPage = ({ type }: {type: LinkType }) => {
-		router[type]('/coin/game/basic', {})
+		router[type]('/coin/game/basic/buy', {})
+	}
+	return goPage
+}
+
+export const goGameBasicPlayRouter = () => {
+	const router = useRouter()
+	const goPage = ({ type }: {type: LinkType }) => {
+		router[type]('/coin/game/basic/play', {})
 	}
 	return goPage
 }

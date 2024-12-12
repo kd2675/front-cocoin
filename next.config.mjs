@@ -48,7 +48,8 @@ App is running at:
 - Local: ${serverUrl}
 - Network: ${nextConfig.serverRuntimeConfig.HTTP}://${getIPAdress()}:${nextConfig.serverRuntimeConfig.PORT}
 - ApiNetwork : ${process.env.NEXT_PUBLIC_API_SERVER_URL}
-- FileNetwork : ${process.env.NEXT_PUBLIC_File_SERVER_URL}
+- MemberNetwork : ${process.env.NEXT_PUBLIC_MEMBER_SERVER_URL}
+- FileNetwork : ${process.env.NEXT_PUBLIC_FILE_SERVER_URL}
 - isLocal : ${isLocal}
 - isDev : ${isDev}
 - isProduction : ${isProd}

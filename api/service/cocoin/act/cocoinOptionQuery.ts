@@ -1,4 +1,4 @@
-import cocoinAxios from '@api/service/cocoin/cocoinAxios'
+import cocoinAxios from '@api/service/cocoin/act/cocoinAxios'
 
 const queryKeys = {
 	getTicker: ['getTicker'] as const,

@@ -4,7 +4,7 @@ import OrderBoxChart from '@component/module/coin/coin/OrderBoxChart'
 import OrderBoxBid from '@component/module/coin/coin/OrderBoxBid'
 import OrderBoxOrder from '@component/module/coin/coin/OrderBoxOrder'
 import { useEffect, useState } from 'react'
-import { useGetTicker } from '@api/service/cocoin/useCocoinService'
+import { useGetTicker } from '@api/service/cocoin/biz/useCocoinService'
 import { useForm } from 'react-hook-form'
 import { LoginRegisterSchema, LoginRegisterSchemaType } from '@schema/login'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -14,7 +14,7 @@ type PropsType = {}
 const OrderBox = (props: PropsType) => {
 	const ticker = useGetTicker()
 
-	const [orderPrice, setOrderPrice] = useState<number>(Number(ticker.data?.data.tradePrice))
+	const [orderPrice, setOrderPrice] = useState<number>(Number(ticker.data?.data?.tradePrice))
 
 	return (
 		<>

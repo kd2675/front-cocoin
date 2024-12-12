@@ -1,6 +1,7 @@
 'use client'
 
-import { orderBook } from '@api/service/cocoin/cocoinAxios'
+
+import { orderBook } from '@api/service/cocoin/vo/cocoinType'
 
 type PropsType = {
 	orderBook: orderBook

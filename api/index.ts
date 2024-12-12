@@ -1,6 +1,4 @@
 import axiosLib from 'axios'
-import { tokenRefreshV1 } from 'api/deprecated/auth'
-import { TokenType } from '@api/service/auth/authAxios'
 
 export type BaseResponseType = {
 	code: number
@@ -10,7 +8,7 @@ export type BaseResponseType = {
 
 export type BaseDataResponseType<t> = {
 	code: number
-	data: t
+	data: t | null
 	message: string
 	success: boolean
 }
@@ -49,7 +47,7 @@ export const axios = axiosLib.create({
 })
 
 export const axiosMember = axiosLib.create({
-	baseURL: `${process.env.NEXT_PUBLIC_AUTH_SERVER_URL}`, // typeof location !== "undefined"
+	baseURL: `${process.env.NEXT_PUBLIC_MEMBER_SERVER_URL}`, // typeof location !== "undefined"
 	// headers: {
 	// 	'Authorization': useSelector((state: RootState) => state.auth.accessToken)
 	// },

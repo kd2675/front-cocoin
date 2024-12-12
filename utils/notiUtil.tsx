@@ -50,7 +50,7 @@ const NotiUtil = () => {
 						return (
 							<motion.div
 								className={'fixed z-40 max-w-md px-2'}
-								style={{ margin: '0 auto', right: '0', top: (modal.noti.indexOf(v) + 1) * 10 + 5 + '%' }}
+								style={{ margin: '0 auto', right: '0', top: (modal.noti.indexOf(v) + 1) * 8 + 6 + '%' }}
 								key={v.uuid}
 								initial={basicNotiAnim.initial}
 								animate={basicNotiAnim.animate}

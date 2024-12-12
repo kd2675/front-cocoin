@@ -11,7 +11,7 @@ import { modalActions } from 'redux/reducers/modal'
 import LoginEmailInput from '@component/module/login/LoginEmailInput'
 import LoginPwdInput from '@component/module/login/LoginPwdInput'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useLogin } from '@api/service/auth/useAuthService'
+import { useLogin } from '@api/service/auth/biz/useAuthService'
 
 const Index = () => {
 	const dispatch = useDispatch()

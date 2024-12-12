@@ -11,7 +11,7 @@ export interface Photo {
 class PhotoService extends Service {
 	getPhotos() {
 		return this.http.get<Photo[]>(
-			`/api/auth/ctf/health`,
+			`/ctf/health`,
 		);
 	}
 

@@ -33,7 +33,7 @@ const BasicHeader = () => {
 		dispatch(modalActions.addConfirm({ msg: 'test', title: 'test' }))
 	}
 	const notiTest = () => {
-		dispatch(modalActions.addNoti({ title: 'tes123123123t', msg: 'test' }))
+		dispatch(modalActions.addNoti({ title: 'tes123123123t', msg: 'testtestsdtdststasdasdasasd' }))
 	}
 
 	return (

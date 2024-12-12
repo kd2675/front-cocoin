@@ -4,14 +4,14 @@ import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { menuActions } from '@redux/reducers/menu'
 import { useRouter } from 'next/navigation'
-import { goBasicRouter } from '@/link'
+import { goGameBasicBuyRouter } from '@/link'
 
 type PropsType = {}
 
 const Index = (props: PropsType) => {
 	const dispatch = useDispatch()
 	const router = useRouter()
-	const basicRouter = goBasicRouter()
+	const basicRouter = goGameBasicBuyRouter()
 	useEffect(() => {
 		dispatch(menuActions.setMenuNum(4))
 	}, [])
@@ -40,9 +40,9 @@ const Index = (props: PropsType) => {
 									Basic Plan
 								</h5>
 								<h3 className='mb-2 mt-5 flex justify-center font-sans text-3xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased'>
-									$9.99
+									￦10,000
 									<span className='block -translate-y-1 self-end font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased'>
-										/per month
+										/once
 									</span>
 								</h3>
 								<ul className='mb-5 mt-2 flex flex-col items-center justify-start gap-3 pt-6'>

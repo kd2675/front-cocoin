@@ -1,5 +1,5 @@
-import authAxios from '@api/service/auth/authAxios'
-import AuthService from '@api/service/auth/authAxios'
+import authAxios from '@api/service/auth/act/authAxios'
+import AuthService from '@api/service/auth/act/authAxios'
 
 const queryKeys = {
 	userInfo: ['userInfo'] as const,

@@ -3,13 +3,11 @@
 import React, { useEffect } from 'react'
 import { basicAnim } from '@motion/BasicAnim'
 import { motion } from 'framer-motion'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation'
-import { RootState } from '@redux/store'
 import { FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { SignUpRegisterSchema, SignUpRegisterSchemaType } from '@schema/signUp'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { authActions } from '@redux/reducers/auth'
 import { modalActions } from 'redux/reducers/modal'
 // import { signUpActions } from '@redux/reducers/signUp'
 import SignUpEmailInput from '@component/module/join/SignUpEmailInput'
@@ -18,7 +16,6 @@ import SignUpPwdCheckInput from '@component/module/join/SignUpPwdCheckInput'
 import SignUpNameInput from '@component/module/join/SignUpNameInput'
 import SignUpPhoneInput from '@component/module/join/SignUpPhoneInput'
 import SignUpNickInput from '@component/module/join/SignUpNickInput'
-import { insSignUp } from 'api/deprecated/auth'
 
 const Index = () => {
 	const dispatch = useDispatch()

@@ -1,7 +1,8 @@
-import AuthService, { LoginParamType, TokenType } from '@api/service/auth/authAxios'
+import AuthService from '@api/service/auth/act/authAxios'
 import { MutationParam } from '@api/service/Service'
 import type { DefaultError } from '@tanstack/query-core'
 import { BaseDataResponseType, BaseResponseType } from '@/api'
+import { LoginParamType, TokenType } from '@api/service/auth/vo/authType'
 
 const mutationKeys = {
 	login: ['login'] as const,

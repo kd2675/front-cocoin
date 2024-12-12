@@ -1,8 +1,8 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useDispatch } from 'react-redux'
 import { modalActions } from '@redux/reducers/modal'
-import mutationOptions from '@api/service/cocoin/cocoinOptionMutation'
-import queryOptions from '@api/service/cocoin/cocoinOptionQuery'
+import mutationOptions from '@api/service/cocoin/act/cocoinOptionMutation'
+import queryOptions from '@api/service/cocoin/act/cocoinOptionQuery'
 
 export const useOrder = () => {
 	const dispatch = useDispatch()

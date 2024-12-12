@@ -3,12 +3,12 @@
 import { FormProvider, SubmitErrorHandler, SubmitHandler, UseFormReturn } from 'react-hook-form'
 import { OrderRegisterSchemaType } from '@schema/cocoin'
 import { useDispatch, useSelector } from 'react-redux'
-import { useOrder } from '@api/service/cocoin/useCocoinService'
+import { useOrder } from '@api/service/cocoin/biz/useCocoinService'
 import { modalActions } from '@redux/reducers/modal'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { RootState } from '@redux/store'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { useUserInfo } from '@api/service/auth/useAuthService'
+import { useUserInfo } from '@api/service/auth/biz/useAuthService'
 
 type PropsType = {
 	methods: UseFormReturn<OrderRegisterSchemaType>
@@ -22,7 +22,9 @@ const OrderBoxBuy = (props: PropsType) => {
 
 	const userInfo = useUserInfo()
 
-	const coin = userInfo.data?.data.walletDTO.point ?? 0
+	console.log(userInfo.data)
+
+	let coin = userInfo.data?.data?.walletDTO.point ?? 0
 
 	const tex = 1000000
 

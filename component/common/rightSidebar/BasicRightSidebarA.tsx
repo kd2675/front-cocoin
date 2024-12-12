@@ -1,5 +1,5 @@
 import React from 'react'
-import { UserInfoType } from '@api/service/auth/authAxios'
+import { UserInfoType } from '@api/service/auth/vo/authType'
 
 type PropsType = UserInfoType
 const BasicRightSidebarA = (props: PropsType) => {

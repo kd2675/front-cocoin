@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import queryOptions from '@api/service/photo/queries';
+import queryOptions from '@api/service/photo/act/queries';
 
 export function usePhotos() {
 	return useQuery(queryOptions.all());

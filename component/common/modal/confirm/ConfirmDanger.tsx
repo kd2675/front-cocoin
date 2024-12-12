@@ -46,7 +46,7 @@ const BasicConfirm = (props: PropsType) => {
 					<button
 						data-modal-toggle='example2'
 						data-modal-action='close'
-						className='rounded-full p-2 transition-colors hover:bg-gray-50 focus:outline-none focus:ring'
+						className='rounded-full p-2 transition-colors hover:bg-gray-50 focus:outline-none'
 						onClick={props.closeFunc}
 					>
 						<svg className='fill-current ' width='18' height='18' viewBox='0 0 18 18'>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useHealth } from '@api/service/health/useHealthService'
+import { useHealth } from '@api/service/health/biz/useHealthService'
 import { useRouter } from 'next/navigation'
 import { useDispatch } from 'react-redux'
 import { commonActions } from '@redux/reducers/common'

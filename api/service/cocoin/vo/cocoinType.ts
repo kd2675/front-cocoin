@@ -1,25 +1,5 @@
-import Service from '@api/service/Service'
-import { axios, BaseDataResponseType } from '@/api'
 import { OrderRegisterSchemaType } from '@schema/cocoin'
-import { UserInfoType } from '@api/service/auth/authAxios'
-
-class AuthAxios extends Service {
-	async order(data: OrderParamType) {
-		return await axios.post<BaseDataResponseType<OrderType>>('/cocoin/api/cocoin/order', data)
-	}
-
-	async getTicker() {
-		return await axios.get<BaseDataResponseType<tickerType>>('/cocoin/api/cocoin/ctf/chart/ticker')
-	}
-
-	async getCandles() {
-		return await axios.get<BaseDataResponseType<candleType[]>>('/cocoin/api/cocoin/ctf/chart/candles')
-	}
-
-	async getBid() {
-		return await axios.get<BaseDataResponseType<bidType>>('/cocoin/api/cocoin/ctf/chart/bid')
-	}
-}
+import { UserInfoType } from '@api/service/auth/vo/authType'
 
 export type tickerType = {
 	market: string
@@ -90,5 +70,3 @@ export type orderBook = {
 	askSize: string
 	bidSize: string
 }
-
-export default new AuthAxios()

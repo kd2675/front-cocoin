@@ -13,7 +13,7 @@ import {
 } from '@link/index'
 import { menuActions } from '@redux/reducers/menu'
 import { RootState } from '@redux/store'
-import { useLogout } from '@api/service/auth/useAuthService'
+import { useLogout } from '@api/service/auth/biz/useAuthService'
 
 const SecondLeftSidebar = () => {
 	const dispatch = useDispatch()

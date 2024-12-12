@@ -3,7 +3,7 @@ import { BaseDataResponseType } from '@/api'
 
 class HealthAxios extends Service {
 	getHealth() {
-		return this.http.get<BaseDataResponseType<string>>(`/cocoin/api/auth/ctf/health`)
+		return this.http.get<BaseDataResponseType<string>>(`/cocoin/ctf/health`)
 	}
 }
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useFormContext, UseFormRegisterReturn } from 'react-hook-form'
 import BasicInput from '@component/common/input/BasicInput'
-import { selSignUpEmailCheck } from 'api/deprecated/auth'
 import { SignUpRegisterSchemaType } from '@schema/signUp'
 import { useDispatch, useSelector } from 'react-redux'
 
