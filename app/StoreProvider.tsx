@@ -19,24 +19,27 @@ import { axios } from '@/api'
 type Props = {}
 
 const StoreProvider = ({ children }: { children: React.ReactNode }) => {
-	const [queryClient, setQueryClient] = useState(
-		() =>
-			new QueryClient({
-				defaultOptions: {
-					queries: {
-						// With SSR, we usually want to set some default staleTime
-						// above 0 to avoid refetching immediately on the client
-						staleTime: 60 * 1000,
-						refetchOnWindowFocus: true,
-					},
-				},
-				queryCache: new QueryCache({
-					onError: (error, query) => {
-						console.log('queryClient error')
-					},
-				}),
-			})
-	)
+	const queryClient1 = getQueryClient
+	// const [queryClient, setQueryClient] = useState(
+	// 	() =>
+	// 		new QueryClient({
+	// 			defaultOptions: {
+	// 				queries: {
+	// 					// With SSR, we usually want to set some default staleTime
+	// 					// above 0 to avoid refetching immediately on the client
+	// 					staleTime: 30 * 1000,
+	// 					refetchOnWindowFocus: true,
+	// 				},
+	// 			},
+	// 			queryCache: new QueryCache({
+	// 				onError: (error, query) => {
+	// 					console.log('queryClient error')
+	// 				},
+	// 			}),
+	// 		})
+	// )
+
+	// const queryClient1 = getQueryClient()
 
 	const router = useRouter()
 	const client = useRef<CompatClient>()
@@ -45,13 +48,13 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
 		if (!client.current) {
 			// Create the store instance the first time this renders
 			//socket
-			connect(client, store.dispatch, router, queryClient)
+			connect(client, store.dispatch, router, queryClient1)
 			return () => disconnect(client)
 		}
 	}, [])
 
 	return (
-		<QueryClientProvider client={queryClient}>
+		<QueryClientProvider client={queryClient1}>
 			{/*<SocketContext.Provider value={client}>*/}
 				<Provider store={store}>
 					<PersistGate loading={<BasicLoading></BasicLoading>} persistor={persistor}>

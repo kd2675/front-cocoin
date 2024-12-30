@@ -16,12 +16,12 @@ const OrderBoxBid = (props: PropsType) => {
 			<div className='col-span-1 grid grid-cols-4 content-stretch rounded-lg bg-white shadow'>
 				{candles.data && candles.data.data?.orderbookUnits.reverse().map((v, i, a)=>{
 					if (i % 3 == 0){
-						return <OrderBoxBidUpBtn orderBook={v} setOrderPrice={props.setOrderPrice}></OrderBoxBidUpBtn>
+						return <OrderBoxBidUpBtn key={i} orderBook={v} setOrderPrice={props.setOrderPrice}></OrderBoxBidUpBtn>
 					}
 				})}
 				{candles.data && candles.data.data?.orderbookUnits.reverse().map((v, i, a)=>{
 					if (i % 3 == 0){
-						return <OrderBoxBidDownBtn orderBook={v} setOrderPrice={props.setOrderPrice}></OrderBoxBidDownBtn>
+						return <OrderBoxBidDownBtn key={i} orderBook={v} setOrderPrice={props.setOrderPrice}></OrderBoxBidDownBtn>
 					}
 				})}
 			</div>

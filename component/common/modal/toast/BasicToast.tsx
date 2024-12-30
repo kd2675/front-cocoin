@@ -99,9 +99,11 @@ const BasicToast = (props: PropsType) => {
 
 				<Progress
 					value={state}
-					variant="filled"
-					size="md"
+					variant='filled'
+					size='md'
 					placeholder={undefined}
+					onPointerEnterCapture={()=>{}}
+					onPointerLeaveCapture={()=>{}}
 				/>
 			</div>
 		</>

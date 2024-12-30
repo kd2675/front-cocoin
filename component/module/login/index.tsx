@@ -12,6 +12,7 @@ import LoginEmailInput from '@component/module/login/LoginEmailInput'
 import LoginPwdInput from '@component/module/login/LoginPwdInput'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useLogin } from '@api/service/auth/biz/useAuthService'
+import { goHomeRoute } from '@/link'
 
 const Index = () => {
 	const dispatch = useDispatch()
@@ -27,6 +28,12 @@ const Index = () => {
 
 	const emailRegister = methods.register('userEmail')
 	const pwdRegister = methods.register('userPassword')
+
+	const homeRoute = goHomeRoute()
+
+	const goHomeOnClick = () => {
+		homeRoute({ type: 'push' })
+	}
 
 	const submitHandler: SubmitHandler<LoginRegisterSchemaType> = async (data) => {
 		console.log('data : ', data)
@@ -44,6 +51,7 @@ const Index = () => {
 	return (
 		<>
 			<motion.div className={'overflow-hidden'} initial={basicAnim.initial} animate={basicAnim.animate}>
+				<div onClick={goHomeOnClick}>home</div>
 				<div className='flex min-h-full items-center justify-center px-4 py-12 sm:px-6 lg:px-8'>
 					<div className='w-full max-w-xs'>
 						<div className={'flex'}>

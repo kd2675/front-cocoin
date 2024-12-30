@@ -1,15 +1,14 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import mutationOptions from '@api/service/auth/act/authOption'
+import mutationOptions from '@api/service/auth/act/authOptionMutation'
 import { useDispatch } from 'react-redux'
-import { MutationParam } from '@api/service/Service'
 import { modalActions } from '@redux/reducers/modal'
-import { axios } from '@/api'
+import { setAuthorizationToken } from '@/api'
 import { authActions } from '@redux/reducers/auth'
 import queryOptions from '@api/service/auth/act/authOptionQuery'
 import { useRouter } from 'next/navigation'
-import { commonActions } from '@redux/reducers/common'
 import { menuActions } from '@redux/reducers/menu'
-import { goHomeRoute, goLoginRoute } from '@/link'
+import { goLoginRoute } from '@/link'
+import { setTimeout } from 'next/dist/compiled/@edge-runtime/primitives'
 
 export const useLogin = () => {
 	const dispatch = useDispatch()
@@ -18,8 +17,10 @@ export const useLogin = () => {
 
 	return useMutation(
 		mutationOptions.login({
-			onSuccess: (data) => {
-				axios.defaults.headers.common['Authorization'] = `Bearer ${data.data.accessToken}`
+			onSuccess: async (data) => {
+				await setAuthorizationToken(data.data.accessToken)
+				// axios.defaults.headers.common['Authorization'] = `Bearer ${data.data.accessToken}`
+				// axiosMember.defaults.headers.common['Authorization'] = `Bearer ${data.data.accessToken}`
 				dispatch(menuActions.setIsMenu(false))
 				dispatch(authActions.setToken(data.data))
 				dispatch(
@@ -27,7 +28,7 @@ export const useLogin = () => {
 						msg: '로그인 되었습니다.',
 						type: 'suc',
 						closeCallback: () => {
-							router.back()
+							// router.back()
 						},
 					})
 				)
@@ -47,7 +48,8 @@ export const useLogout = () => {
 
 	return useMutation(
 		mutationOptions.logout({
-			onSuccess: () => {
+			onSuccess: async () => {
+				await setAuthorizationToken('')
 				dispatch(menuActions.setIsMenu(false))
 				dispatch(authActions.delToken())
 				dispatch(
@@ -86,9 +88,18 @@ export const useUserInfo = () => {
 	const loginRoute = goLoginRoute()
 
 	const query = useQuery(queryOptions.getUserInfo(), queryClient)
-	if (query.data?.code === 40070) {
-		dispatch(modalActions.addAlert({type:'danger', msg:'로그인이 필요합니다.'}))
-		loginRoute({type: 'push'})
+
+	if (query.data?.code === 20310) {
+		dispatch(
+			modalActions.addAlert({
+				type: 'danger',
+				msg: '로그인이 필요합니다.',
+				closeCallback: async () => {
+					queryClient.removeQueries({queryKey: ['userInfo']})
+					loginRoute({ type: 'push' })
+				},
+			})
+		)
 	}
 
 	return query

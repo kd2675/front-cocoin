@@ -3,7 +3,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@redux/store'
 import { useEffect } from 'react'
-import { axios } from '@/api'
+import { axios, setAuthorizationToken } from '@/api'
 import { useUserInfo } from '@api/service/auth/biz/useAuthService'
 import { authActions } from '@redux/reducers/auth'
 
@@ -17,9 +17,7 @@ const LoginUtil = (props: PropsType) => {
 
 	useEffect(() => {
 		if (accessToken){
-			axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
-
-			useUserInfo()
+			setAuthorizationToken(accessToken)
 		}
 	}, [])
 

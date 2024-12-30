@@ -3,24 +3,23 @@ import { cache } from 'react'
 import { isEqual } from '@utils/isEqual'
 import { QueryCache } from '@tanstack/query-core'
 
-export const getQueryClient = cache(
-	() =>
-		new QueryClient({
-			defaultOptions: {
-				queries: {
-					// With SSR, we usually want to set some default staleTime
-					// above 0 to avoid refetching immediately on the client
-					staleTime: 60 * 1000,
-					refetchOnWindowFocus: true,
-				},
-			},
-			queryCache: new QueryCache({
-				onError: (error, query) => {
-					console.log('error')
-				},
-			}),
-		})
-)
+//prefetch
+export const getQueryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			// With SSR, we usually want to set some default staleTime
+			// above 0 to avoid refetching immediately on the client
+			staleTime: 5 * 1000,
+			refetchOnWindowFocus: false,
+			refetchOnMount: false,
+		},
+	},
+	queryCache: new QueryCache({
+		onError: (error, query) => {
+			console.log('queryClient error')
+		},
+	}),
+})
 
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T
 
@@ -37,7 +36,7 @@ export async function getDehydratedQuery<Q extends QueryProps>({
 	queryKey,
 	queryFn,
 }: Q) {
-	const queryClient = getQueryClient()
+	const queryClient = getQueryClient
 	await queryClient.prefetchQuery({ queryKey, queryFn })
 	const { queries } = dehydrate(queryClient)
 	const [dehydratedQuery] = queries.filter((query) => isEqual(query.queryKey, queryKey))
@@ -49,7 +48,7 @@ export async function getDehydratedQuery<Q extends QueryProps>({
 }
 
 export async function getDehydratedQueries<Q extends QueryProps[]>(queries: Q) {
-	const queryClient = getQueryClient();
+	const queryClient = getQueryClient;
 	await Promise.all(
 		queries.map(({ queryKey, queryFn }) =>
 			queryClient.prefetchQuery({ queryKey, queryFn }),

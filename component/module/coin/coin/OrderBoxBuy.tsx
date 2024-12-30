@@ -21,14 +21,20 @@ const OrderBoxBuy = (props: PropsType) => {
 	const useOrderMutate = useOrder()
 
 	const userInfo = useUserInfo()
-
-	console.log(userInfo.data)
+	// const userInfo = {}
 
 	let coin = userInfo.data?.data?.walletDTO.point ?? 0
-
 	const tex = 1000000
-
 	const methods = props.methods
+
+	const [marginSlct, setMarginSlct] = useState<string>('l')
+	const [margin, setMargin] = useState<number>(1)
+	// const [orderPrice, setOrderPrice] = useState<number>(80102000)
+	const [orderPer, setOrderPer] = useState<number>(50)
+	const [cnt, setCnt] = useState<number>(Math.round((coin / props.orderPrice / 2) * 1000) / 1000)
+	const [price, setPrice] = useState<number>(Math.round(props.orderPrice * cnt))
+	const [fullPrice, setFullPrice] = useState<number>(Math.round(price + tex))
+
 	const submitHandler: SubmitHandler<OrderRegisterSchemaType> = async (data) => {
 		console.log('submitData : ', data)
 		dispatch(
@@ -53,13 +59,62 @@ const OrderBoxBuy = (props: PropsType) => {
 		dispatch(modalActions.addAlert({ msg: value.message, type: 'danger' }))
 	}
 
-	const [marginSlct, setMarginSlct] = useState<string>('l')
-	const [margin, setMargin] = useState<number>(1)
-	// const [orderPrice, setOrderPrice] = useState<number>(80102000)
-	const [orderPer, setOrderPer] = useState<number>(50)
-	const [cnt, setCnt] = useState<number>(Math.round((coin / props.orderPrice / 2) * 1000) / 1000)
-	const [price, setPrice] = useState<number>(Math.round(props.orderPrice * cnt))
-	const [fullPrice, setFullPrice] = useState<number>(Math.round(price + tex))
+	useEffect(() => {
+		methods.setValue('orderSlct', 'b')
+		methods.setValue('coinSlct', 'BTC')
+		methods.setValue('marginSlct', marginSlct)
+		methods.setValue('margin', margin)
+		methods.setValue('cnt', cnt)
+		methods.setValue('price', props.orderPrice)
+	}, [])
+
+	useEffect(() => {
+		const cnt = Math.round((coin / props.orderPrice) * (orderPer / 100) * 1000) / 1000
+		setCnt(cnt)
+		// methods.setValue('cnt', cnt)
+	}, [coin, props.orderPrice])
+
+	// useEffect(() => {
+	// 	setOrderPer(Math.round((Number(price) / (coin - tex)) * 100))
+	// }, [orderCnt])
+
+	useEffect(() => {
+		const current = Math.round((coin - tex) * (orderPer / 100))
+		numberCheck(current)
+		const cnt = Math.round((coin / props.orderPrice) * (orderPer / 100) * 1000) / 1000
+		setCnt(cnt)
+		// methods.setValue('cnt', cnt)
+	}, [coin, orderPer])
+
+	useEffect(() => {
+		setFullPrice(Number(price) + tex)
+	}, [price, tex])
+
+	const numberCheck = (v: any) => {
+		let price = v || 0
+		if (!isFinite(price)) return
+		price = price.toString()
+
+		if (price !== '0' && !price.includes('.')) {
+			price = price.replace(/^0+/, '')
+		}
+
+		if (price > coin - tex) {
+			price = coin - tex
+		}
+
+		setPrice(price)
+	}
+
+	const addComma = (price: number) => {
+		let returnString = price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+		return returnString
+	}
+
+	const rmComma = (price: string) => {
+		let returnString = price?.toString().replaceAll(',', '')
+		return returnString
+	}
 
 	const marginOnClick = (value: string) => {
 		setMarginSlct(value)
@@ -113,62 +168,6 @@ const OrderBoxBuy = (props: PropsType) => {
 		})
 	}
 
-	useEffect(() => {
-		methods.setValue('orderSlct', 'b')
-		methods.setValue('coinSlct', 'BTC')
-		methods.setValue('marginSlct', marginSlct)
-		methods.setValue('margin', margin)
-		methods.setValue('cnt', cnt)
-		methods.setValue('price', props.orderPrice)
-	}, [coin, marginSlct, margin, cnt, props.orderPrice])
-
-	useEffect(() => {
-		const cnt = Math.round((coin / props.orderPrice) * (orderPer / 100) * 1000) / 1000
-		setCnt(cnt)
-		// methods.setValue('cnt', cnt)
-	}, [coin, props.orderPrice])
-
-	// useEffect(() => {
-	// 	setOrderPer(Math.round((Number(price) / (coin - tex)) * 100))
-	// }, [orderCnt])
-
-	useEffect(() => {
-		const current = Math.round((coin - tex) * (orderPer / 100))
-		numberCheck(current)
-		const cnt = Math.round((coin / props.orderPrice) * (orderPer / 100) * 1000) / 1000
-		setCnt(cnt)
-		// methods.setValue('cnt', cnt)
-	}, [coin, orderPer])
-
-	const numberCheck = (v: any) => {
-		let price = v || 0
-		if (!isFinite(price)) return
-		price = price.toString()
-
-		if (price !== '0' && !price.includes('.')) {
-			price = price.replace(/^0+/, '')
-		}
-
-		if (price > coin - tex) {
-			price = coin - tex
-		}
-
-		setPrice(price)
-	}
-
-	useEffect(() => {
-		setFullPrice(Number(price) + tex)
-	}, [price, tex])
-
-	const addComma = (price: number) => {
-		let returnString = price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-		return returnString
-	}
-
-	const rmComma = (price: string) => {
-		let returnString = price?.toString().replaceAll(',', '')
-		return returnString
-	}
 
 	return (
 		<>

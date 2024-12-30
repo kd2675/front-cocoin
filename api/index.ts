@@ -37,7 +37,7 @@ export type BasePageableType<t> = {
 export const axios = axiosLib.create({
 	baseURL: `${process.env.NEXT_PUBLIC_API_SERVER_URL}`, // typeof location !== "undefined"
 	headers: {
-		'Auth-header': 'second'
+		'Auth-header': 'cloud'
 		// 'Authorization': useSelector((state: RootState) => state.auth.accessToken)
 	},
 	// ? ( location?.origin.indexOf("yeoboya.com") > -1 ? location?.origin : process.env.API_SERVER_URL )
@@ -48,9 +48,10 @@ export const axios = axiosLib.create({
 
 export const axiosMember = axiosLib.create({
 	baseURL: `${process.env.NEXT_PUBLIC_MEMBER_SERVER_URL}`, // typeof location !== "undefined"
-	// headers: {
-	// 	'Authorization': useSelector((state: RootState) => state.auth.accessToken)
-	// },
+	headers: {
+		'Auth-header': 'cloud'
+		// 'Authorization': useSelector((state: RootState) => state.auth.accessToken)
+	},
 	// ? ( location?.origin.indexOf("yeoboya.com") > -1 ? location?.origin : process.env.API_SERVER_URL )
 	// : process.env.API_SERVER_URL,z
 	// adapter: cacheAdapterEnhancer(axiosLib.defaults.adapter, { enabledByDefault: false }),
@@ -117,7 +118,9 @@ export const setAuthorizationToken = async (token: string) => {
 	console.log('setAuthorizationToken')
 	if (token && token !== '') {
 		axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+		axiosMember.defaults.headers.common['Authorization'] = `Bearer ${token}`
 	} else {
 		delete axios.defaults.headers.common['Authorization']
+		delete axiosMember.defaults.headers.common['Authorization']
 	}
 }

@@ -16,7 +16,7 @@ class AuthAxios extends Service {
 	}
 
 	async getBid() {
-		return await axios.get<BaseDataResponseType<bidType>>('/ctf/chart/bid')
+		return await axios.get<BaseDataResponseType<bidType>>('/cocoin/ctf/chart/bid')
 	}
 }
 
