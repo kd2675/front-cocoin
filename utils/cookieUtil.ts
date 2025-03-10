@@ -7,3 +7,7 @@ export const setCookie = (name:string, value:string, option:any='') => {
 export const getCookie = (name:string) => {
     return cookies().get(name);
 }
+
+export const getAllCookie = () => {
+    return cookies()
+}

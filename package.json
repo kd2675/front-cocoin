@@ -60,6 +60,7 @@
     "sockjs-client": "^1.6.1",
     "superjson": "^2.2.1",
     "swiper": "^11.1.1",
+    "socket.io-client": "=4.5.4",
     "tailwindcss": "^3.2.4",
     "uuid": "^9.0.0",
     "yup": "^1.4.0"

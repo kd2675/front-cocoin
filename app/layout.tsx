@@ -20,6 +20,8 @@ import NotiUtil from '@utils/notiUtil'
 import { ModalReducerType } from '@redux/reducers/modal'
 import { axios } from '@/api'
 import LoginUtil from '@utils/loginUtil'
+import SocketComponent from '@/socket/SocketComponent'
+import { getAllCookie, getCookie } from '@utils/cookieUtil'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -37,6 +39,7 @@ export default function RootLayout({
 		<html className='h-full bg-white' lang='kr'>
 			<body className={inter.className + ' h-full'}>
 				<StoreProvider>
+					<SocketComponent cookies={getAllCookie()}></SocketComponent>
 					<LoginUtil />
 					{children}
 					<NotiUtil />
