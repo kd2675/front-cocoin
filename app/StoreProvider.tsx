@@ -4,10 +4,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import { store, persistor, RootState } from '@redux/store'
 import { useRouter } from 'next/navigation'
 import { CompatClient } from '@stomp/stompjs'
-import { connect, disconnect } from '@/socket'
+import { connect, disconnect } from '@/socket/v1'
 import { Provider, useSelector } from 'react-redux'
 import { QueryClientProvider, useQuery, useQueryClient } from '@tanstack/react-query'
-import { SocketContext } from '@/socket/useSocketClient'
+import { SocketContext } from '@/socket/v1/useSocketClient'
 import { getQueryClient } from '@query/reactQuery'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import process from 'process'
@@ -44,14 +44,14 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
 	const router = useRouter()
 	const client = useRef<CompatClient>()
 
-	useEffect(() => {
-		if (!client.current) {
-			// Create the store instance the first time this renders
-			//socket
-			connect(client, store.dispatch, router, queryClient1)
-			return () => disconnect(client)
-		}
-	}, [])
+	// useEffect(() => {
+	// 	if (!client.current) {
+	// 		// Create the store instance the first time this renders
+	// 		//socket
+	// 		connect(client, store.dispatch, router, queryClient1)
+	// 		return () => disconnect(client)
+	// 	}
+	// }, [])
 
 	return (
 		<QueryClientProvider client={queryClient1}>

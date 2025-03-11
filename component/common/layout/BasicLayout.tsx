@@ -9,6 +9,7 @@ import RightSidebar from '@component/common/rightSidebar'
 import BasicFooter from '@component/common/footer/BasicFooter'
 import SecondHeader from '@component/common/header/SecondHeader'
 import SecondFooter from '@component/common/footer/SecondFooter'
+import SocketTest from '@component/common/test/SocketTest'
 
 type PropsType = {
 	children: React.ReactNode
@@ -26,6 +27,7 @@ const BasicLayout = (props: PropsType) => {
 				animate={basicAnim.animate}
 			>
 				<SecondHeader></SecondHeader>
+				<SocketTest></SocketTest>
 				{props.children}
 				<SecondFooter></SecondFooter>
 			</motion.div>
