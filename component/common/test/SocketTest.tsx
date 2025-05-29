@@ -12,7 +12,7 @@ const SocketTest = (props: PropsType) => {
 
 	const sendMessage = (): void => {
 		if (input.trim()) {
-			socket.emit("message", input); // 서버로 메시지 전송
+			socket.emit('message', { command: 'test', message: input }) // 서버로 메시지 전송
 			setInput(""); // 입력 초기화
 		}
 	};

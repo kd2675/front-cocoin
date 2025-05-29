@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { store, persistor, RootState } from '@redux/store'
 import { useRouter } from 'next/navigation'
 import { CompatClient } from '@stomp/stompjs'
-import { connect, disconnect } from '@/socket/v1'
 import { Provider, useSelector } from 'react-redux'
 import { QueryClientProvider, useQuery, useQueryClient } from '@tanstack/react-query'
 import { SocketContext } from '@/socket/v1/useSocketClient'
@@ -15,43 +14,22 @@ import { QueryCache, QueryClient } from '@tanstack/query-core'
 import { PersistGate } from 'redux-persist/integration/react';
 import BasicLoading from '@component/loading/BasicLoading'
 import { axios } from '@/api'
+import useSocket from '@/socket/v1'
 
 type Props = {}
 
 const StoreProvider = ({ children }: { children: React.ReactNode }) => {
 	const queryClient1 = getQueryClient
-	// const [queryClient, setQueryClient] = useState(
-	// 	() =>
-	// 		new QueryClient({
-	// 			defaultOptions: {
-	// 				queries: {
-	// 					// With SSR, we usually want to set some default staleTime
-	// 					// above 0 to avoid refetching immediately on the client
-	// 					staleTime: 30 * 1000,
-	// 					refetchOnWindowFocus: true,
-	// 				},
-	// 			},
-	// 			queryCache: new QueryCache({
-	// 				onError: (error, query) => {
-	// 					console.log('queryClient error')
-	// 				},
-	// 			}),
-	// 		})
-	// )
 
-	// const queryClient1 = getQueryClient()
-
-	const router = useRouter()
-	const client = useRef<CompatClient>()
-
+	// const { connect, disconnect, subscribe, publish } = useSocket('http://example.com/socket');
+	//
 	// useEffect(() => {
-	// 	if (!client.current) {
-	// 		// Create the store instance the first time this renders
-	// 		//socket
-	// 		connect(client, store.dispatch, router, queryClient1)
-	// 		return () => disconnect(client)
-	// 	}
-	// }, [])
+	// 	connect(
+	// 		() => console.log('Connected'),
+	// 		() => console.error('Error')
+	// 	);
+	// 	return () => disconnect();
+	// }, []);
 
 	return (
 		<QueryClientProvider client={queryClient1}>

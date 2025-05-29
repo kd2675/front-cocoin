@@ -31,8 +31,11 @@ const SocketConnection = (): null => {
 		socket.on('response', (data: PacketDataType) => {
 			console.log(data)
 			switch (data.command) {
+				case 'notice': // 공지 메시지 처리
+					dispatch(modalActions.addNoti({ title: '공지사항', msg: data.message }))
+					break
 				case 'test':
-					dispatch(modalActions.addNoti({title: 'test', msg: data.message}))
+					dispatch(modalActions.addAlert({ msg: data.message }))
 					break
 				case 'logout':
 					console.log(data)
@@ -44,7 +47,7 @@ const SocketConnection = (): null => {
 		return () => {
 			socket.disconnect()
 		}
-	}, [])
+	}, [dispatch])
 
 	return null // UI 요소 없음
 }

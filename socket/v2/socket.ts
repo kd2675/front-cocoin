@@ -5,14 +5,17 @@ interface ServerToClientEvents {
 }
 
 interface ClientToServerEvents {
-	message: (data: string) => void;
+	sendNotice: (data: { command: string, message: string }) => void;
+	message: (data: { command: string,  message: string }) => void;
 }
 
 type ioOptsType = {
+	autoConnect: boolean
 	reconnection: boolean
 	reconnectionAttempts: number
-	autoConnect: boolean
-	timeout: number // timeout 5 seconds
+	reconnectionDelay: number,
+	reconnectionDelayMax: number,
+	timeout: number
 	multiplex: boolean
 	transports: string[]
 	query: {
@@ -23,20 +26,23 @@ type ioOptsType = {
 		memNo?: string
 		media?: string
 		cookie?: string
+		token?: string
 	}
 }
 
 const ioOpts: ioOptsType = {
+	autoConnect: true,
 	reconnection: true,
 	reconnectionAttempts: 5,
-	autoConnect: true,
+	reconnectionDelay: 1000 * 5, // 5초
+	reconnectionDelayMax: 1000 * 60,
 	timeout: 5000,
 	multiplex: false,
-	transports: ['websocket'],
+	transports: ['websocket', 'polling'],
 	query: {
 		gubun: process.env.NEXT_PUBLIC_SOCKET_SERVER_GUBUN as string,
 		pathUrl: '/',
-		cookie: '',
+		token: ''
 	},
 }
 // Socket.IO 클라이언트 생성

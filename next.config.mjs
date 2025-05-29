@@ -2,8 +2,6 @@ import path from 'path'
 import * as os from 'node:os'
 
 /** @type {import('next').NextConfig} */
-const hostname = process.env.host
-const port = process.env.NEXT_PUBLIC_SERVER_PORT
 const isLocal = process.env.NODE_ENV === 'local'
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = process.env.NODE_ENV === 'production'
@@ -54,7 +52,7 @@ App is running at:
 - isDev : ${isDev}
 - isProduction : ${isProd}
 - ENV : ${ENV}
-- HostName : ${hostname}
+- HostName : ${nextConfig.serverRuntimeConfig.hostname}
 			`)
 		}
 
