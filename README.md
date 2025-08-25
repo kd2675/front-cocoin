@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🪙 Front-Cocoin
+Second 프로젝트의 암호화폐 모의투자 프론트엔드 애플리케이션.
+Next.js 14, Redux Saga, Socket.IO를 활용한 실시간 암호화폐 거래 시뮬레이션 플랫폼으로,
+사용자들이 리스크 없이 가상 투자 경험을 쌓을 수 있는 현대적인 웹 애플리케이션입니다.
 
-## Getting Started
+## 📖 프로젝트 개요
+Front-Cocoin은 암호화폐 모의투자를 위한 React 기반 프론트엔드 애플리케이션입니다.
+실시간 시세 데이터, 포트폴리오 관리, 거래 시스템 등을 통해 실제 암호화폐 거래소와
+유사한 사용자 경험을 제공하며, 투자 학습과 체험을 위한 안전한 환경을 제공합니다.
 
-First, run the development server:
+## 🎯 주요 기능
+- **실시간 암호화폐 시세**: WebSocket을 통한 실시간 가격 업데이트
+- **모의투자 거래**: 가상 자산을 이용한 매수/매도 거래 시뮬레이션
+- **포트폴리오 관리**: 보유 자산 현황 및 수익률 추적
+- **차트 분석**: 인터랙티브한 가격 차트 및 기술적 분석 도구
+- **거래 내역**: 상세한 거래 히스토리 및 통계
+- **랭킹 시스템**: 사용자 간 수익률 경쟁 및 리더보드
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ 기술 스택
+- **Next.js 14**: App Router를 활용한 최신 React 프레임워크
+- **React 18**: 사용자 인터페이스 라이브러리
+- **TypeScript**: 타입 안전성이 보장된 개발
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 상태 관리
+- **Redux Toolkit**: 상태 관리 라이브러리
+- **Redux Saga**: 비동기 액션 및 사이드 이펙트 처리
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 스타일링 & UI
+- **TailwindCSS**: 유틸리티 우선 CSS 프레임워크
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 네트워킹 & 데이터
+- **Axios**: HTTP 클라이언트
+- **React Query/SWR**: 서버 상태 관리 (query 폴더)
+- **Custom API Layer**: 체계적인 API 관리
 
-## Learn More
+### 사용자 관리
+- **회원가입/로그인**: 안전한 사용자 인증 시스템
+- **프로필 관리**: 개인정보 및 투자 성향 설정
+- **대시보드**: 개인화된 투자 현황 대시보드
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 코인 정보
+- **코인 목록**: 다양한 암호화폐 정보 및 시세
+- **상세 정보**: 각 코인의 기술적 분석 및 시장 데이터
+- **검색 및 필터링**: 원하는 코인을 빠르게 찾기
